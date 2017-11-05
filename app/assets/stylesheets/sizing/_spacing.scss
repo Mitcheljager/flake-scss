@@ -1,0 +1,92 @@
+$spacing-responsive: true !default;
+
+$spacing: () !default;
+@if $spacing == () {
+  $spacing: (
+    0: 0,
+    1: .5rem,
+    2: 1rem,
+    3: 2rem,
+    4: 3rem,
+    5: 4rem,
+    auto: auto
+  );
+}
+
+$spacing-locations: (
+  t: "top",
+  r: "right",
+  b: "bottom",
+  l: "left",
+  y: (
+    "top",
+    "bottom"
+  ), x: (
+    "left",
+    "right"
+  )
+);
+
+$types: (
+  m: margin,
+  p: padding
+);
+
+@mixin paddingmargin($space, $value, $breakpoint: 0, $location: "", $location-value: "") {
+  $s: "";
+  $bp: "";
+  $l: "";
+
+  @each $type, $type-value in $types {
+    @if $breakpoint != 0 {
+      $bp: "#{$breakpoint}\\:";
+      $s: "-#{$space}";
+    } @else {
+      $s: "-#{$space}";
+    }
+
+    @if $location != "" {
+      $l: "#{$location}";
+    }
+
+    .#{$bp}#{$type}#{$l}#{$s} {
+      @each $loc in $location-value {
+        $sep: "";
+        @if $loc != "" {
+          $sep: "-";
+        }
+
+        #{$type-value}#{$sep}#{$loc}: $value;
+      }
+    }
+  }
+}
+
+@each $space, $value in $spacing {
+  @include paddingmargin($space, $value);
+
+  @each $location, $location-value in $spacing-locations {
+    @include paddingmargin($space, $value, 0, $location, $location-value);
+  }
+
+  @if $spacing-responsive {
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include mediaquery($breakpoint) {
+        @include paddingmargin($space, $value, $breakpoint);
+
+        @each $location, $location-value in $spacing-locations {
+          @include paddingmargin($space, $value, $breakpoint, $location, $location-value);
+        }
+      }
+    }
+  }
+}
+
+@each $space, $value in $spacing {
+  @if type-of($value) == "number" {
+    .-mx-#{$space} {
+      margin-left: $value * -1;
+      margin-right: $value * -1;
+    }
+  }
+}

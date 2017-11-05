@@ -1,0 +1,36 @@
+$display-hover: false !default;
+$display-responsive: true !default;
+
+$display: () !default;
+@if $display == () {
+  $display: (
+    inline,
+    inline-block,
+    block,
+    flex,
+    inline-flex
+  );
+}
+
+@each $property in $display {
+  $hover: "";
+
+  @if $display-hover {
+    $hover: ", .hover\\:#{$property}:hover";
+  }
+
+  .#{$property}
+  #{$hover} {
+    display: $property;
+  }
+
+  @if $display-responsive {
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include mediaquery($breakpoint) {
+        .#{$breakpoint}\:#{$property} {
+          display: $property;
+        }
+      }
+    }
+  }
+}

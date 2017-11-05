@@ -1,0 +1,58 @@
+$grid-size: 12;
+$grid-full: true !default;
+$grid-single: false !default;
+
+@mixin widthify($divide: 0, $division: 0, $breakpoint: 0) {
+  $bp: "";
+  @if $breakpoint != 0 {
+    $bp: "#{$breakpoint}\\:";
+  }
+
+  .#{$bp}w-#{$division}\/#{$divide} {
+    width: (100% / $divide) * $division;
+  }
+}
+
+@if $grid-single {
+  @for $i from 1 through $grid-size {
+    .w-#{$i} {
+      width: (100% / $grid-size) * $i;
+    }
+
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include mediaquery($breakpoint) {
+        .#{$breakpoint}\:w-#{$i} {
+          width: (100% / $grid-size) * $i;
+        }
+      }
+    }
+  }
+} @else {
+  @for $i from 1 through $grid-size {
+    @if $grid-full {
+      @for $j from 1 through $i {
+        @include widthify($i, $j);
+
+        @each $breakpoint, $breakpoint-value in $breakpoints {
+          @include mediaquery($breakpoint) {
+            @include widthify($i, $j, $breakpoint);
+          }
+        }
+      }
+    } @else {
+      @include widthify($i, 1);
+
+      @each $breakpoint, $breakpoint-value in $breakpoints {
+        @include mediaquery($breakpoint) {
+          @include widthify($i, 1, $breakpoint);
+        }
+      }
+    }
+  }
+}
+
+@if map-get($breakpoints, mw) {
+  .w-max {
+    max-width: map-get($breakpoints, mw);
+  }
+}
