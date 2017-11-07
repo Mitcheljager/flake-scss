@@ -1,0 +1,23 @@
+$text-align-responsive: true !default;
+
+$align: (
+  left,
+  center,
+  right
+);
+
+@each $value in $align {
+  .text-#{$value} {
+    text-align: $value;
+  }
+
+  @if $text-align-responsive {
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include mediaquery($breakpoint) {
+        .text-#{$value} {
+          text-align: $value;
+        }
+      }
+    }
+  }
+}

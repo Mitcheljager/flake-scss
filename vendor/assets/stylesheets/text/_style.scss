@@ -1,0 +1,49 @@
+$decoration: (
+  overline,
+  line-through,
+  underline,
+  none
+);
+
+@each $value in $decoration {
+  .text-#{$value} {
+    text-decoration: $value;
+  }
+}
+
+$style: (
+  normal,
+  italic,
+  oblique
+);
+
+@each $value in $style {
+  .text-#{$value} {
+    font-style: $value;
+  }
+}
+
+$weight: (
+  lighter,
+  normal,
+  bold,
+  bolder
+);
+
+@each $value in $weight {
+  .text-#{$value} {
+    font-weight: $value;
+  }
+}
+
+$transform: (
+  lowercase,
+  uppercase,
+  capitalize
+);
+
+@each $value in $transform {
+  .text-#{$value} {
+    text-transform: $value;
+  }
+}

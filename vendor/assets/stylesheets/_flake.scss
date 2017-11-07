@@ -6,7 +6,10 @@
 
 @import "background/colors";
 
-@import "text/colors";
+@import "text/colors",
+        "text/fonts",
+        "text/style",
+        "text/align";
 
 @import "sizing/spacing",
         "sizing/grid";
