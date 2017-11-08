@@ -1,0 +1,52 @@
+$border-hover: true !default;
+$border-responsive: true !default;
+
+$borders: () !default;
+@if $borders == () {
+  $borders: (
+    "": "",
+    t: "top",
+    r: "right",
+    b: "bottom",
+    l: "left"
+  );
+}
+
+$standard-border: 1px solid black;
+
+@mixin makeBorder($space, $value, $breakpoint: 0) {
+  $bp: "";
+  $l: "";
+  $sep: "";
+
+  @if $breakpoint != 0 {
+    $bp: "#{$breakpoint}\\:";
+    $l: "-#{$space}";
+  } @else {
+    $l: "-#{$space}";
+  }
+
+  @if $value != "" {
+    $sep: "-";
+  }
+
+  .#{$bp}border#{$sep}#{$space} {
+    border#{$sep}#{$value}: $standard-border;
+  }
+
+  .#{$bp}border#{$sep}#{$space}-0 {
+    border#{$sep}#{$value}: 0;
+  }
+}
+
+@each $border, $value in $borders {
+  @include makeBorder($border, $value);
+
+  @if $border-responsive {
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include mediaquery($breakpoint) {
+        @include makeBorder($border, $value, $breakpoint);
+      }
+    }
+  }
+}

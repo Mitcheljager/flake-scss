@@ -1,0 +1,31 @@
+@import "../helpers/colors-list";
+
+$border-color-hover: true !default;
+$border-color-responsive: false !default;
+
+@each $color in $colors {
+  $medium: map-get($colors-list, $color);
+
+  @each $shade, $value in $medium {
+    $hover: "";
+
+    @if $border-color-hover {
+      $hover: ", .hover\\:border-#{$color}-#{$shade}:hover";
+    }
+
+    .border-#{$color}-#{$shade}
+    #{$hover} {
+      border-color: $value;
+    }
+
+    @if $border-color-responsive {
+      @each $breakpoint, $breakpoint-value in $breakpoints {
+        @include mediaquery($breakpoint) {
+          .#{$breakpoint}\:bg-#{$color}-#{$shade} {
+            border-color: $value;
+          }
+        }
+      }
+    }
+  }
+}
