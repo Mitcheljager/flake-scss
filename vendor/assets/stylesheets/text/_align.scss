@@ -13,8 +13,8 @@ $align: (
 
   @if $text-align-responsive {
     @each $breakpoint, $breakpoint-value in $breakpoints {
-      @include mediaquery($breakpoint) {
-        .text-#{$value} {
+      @include breakpoint($breakpoint) {
+        .#{$breakpoint}\:text-#{$value} {
           text-align: $value;
         }
       }

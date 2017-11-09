@@ -10,17 +10,17 @@ $border-color-responsive: false !default;
     $hover: "";
 
     @if $border-color-hover {
-      $hover: ", .hover\\:border-#{$color}-#{$shade}:hover";
+      $hover: ", .hover\\:b-#{$color}-#{$shade}:hover";
     }
 
-    .border-#{$color}-#{$shade}
+    .b-#{$color}-#{$shade}
     #{$hover} {
       border-color: $value;
     }
 
     @if $border-color-responsive {
       @each $breakpoint, $breakpoint-value in $breakpoints {
-        @include mediaquery($breakpoint) {
+        @include breakpoint($breakpoint) {
           .#{$breakpoint}\:bg-#{$color}-#{$shade} {
             border-color: $value;
           }

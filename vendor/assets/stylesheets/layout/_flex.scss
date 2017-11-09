@@ -75,7 +75,7 @@ $flex-list: (
 
         @if $flex-responsive {
           @each $breakpoint, $breakpoint-value in $breakpoints {
-            @include mediaquery($breakpoint) {
+            @include breakpoint($breakpoint) {
               .#{$breakpoint}\:#{$classstart}-#{$value-name} {
                 #{$property}: #{$value-value};
               }

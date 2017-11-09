@@ -16,25 +16,21 @@ $standard-border: 1px solid black;
 
 @mixin makeBorder($space, $value, $breakpoint: 0) {
   $bp: "";
-  $l: "";
   $sep: "";
 
   @if $breakpoint != 0 {
     $bp: "#{$breakpoint}\\:";
-    $l: "-#{$space}";
-  } @else {
-    $l: "-#{$space}";
   }
 
   @if $value != "" {
     $sep: "-";
   }
 
-  .#{$bp}border#{$sep}#{$space} {
+  .#{$bp}b#{$space} {
     border#{$sep}#{$value}: $standard-border;
   }
 
-  .#{$bp}border#{$sep}#{$space}-0 {
+  .#{$bp}b#{$space}-0 {
     border#{$sep}#{$value}: 0;
   }
 }
@@ -44,7 +40,7 @@ $standard-border: 1px solid black;
 
   @if $border-responsive {
     @each $breakpoint, $breakpoint-value in $breakpoints {
-      @include mediaquery($breakpoint) {
+      @include breakpoint($breakpoint) {
         @include makeBorder($border, $value, $breakpoint);
       }
     }

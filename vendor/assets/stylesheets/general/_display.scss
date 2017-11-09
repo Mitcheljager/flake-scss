@@ -1,4 +1,3 @@
-$display-hover: false !default;
 $display-responsive: true !default;
 
 $display: () !default;
@@ -15,21 +14,30 @@ $display: () !default;
 @each $property in $display {
   $hover: "";
 
-  @if $display-hover {
-    $hover: ", .hover\\:#{$property}:hover";
-  }
-
-  .#{$property}
-  #{$hover} {
+  .#{$property} {
     display: $property;
   }
 
   @if $display-responsive {
     @each $breakpoint, $breakpoint-value in $breakpoints {
-      @include mediaquery($breakpoint) {
+      @include breakpoint($breakpoint) {
         .#{$breakpoint}\:#{$property} {
           display: $property;
         }
+      }
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+@if $display-responsive {
+  @each $breakpoint, $breakpoint-value in $breakpoints {
+    @include breakpoint($breakpoint) {
+      .#{$breakpoint}\:hidden {
+        display: none;
       }
     }
   }

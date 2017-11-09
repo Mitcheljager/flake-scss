@@ -14,6 +14,7 @@ $spacing: () !default;
 }
 
 $spacing-locations: (
+  auto: "auto",
   t: "top",
   r: "right",
   b: "bottom",
@@ -24,7 +25,7 @@ $spacing-locations: (
   ), x: (
     "left",
     "right"
-  )
+  ),
 );
 
 $types: (
@@ -41,6 +42,7 @@ $types: (
     @if $breakpoint != 0 {
       $bp: "#{$breakpoint}\\:";
       $s: "-#{$space}";
+      $important: !important;
     } @else {
       $s: "-#{$space}";
     }
@@ -68,10 +70,12 @@ $types: (
   @each $location, $location-value in $spacing-locations {
     @include paddingmargin($space, $value, 0, $location, $location-value);
   }
+}
 
-  @if $spacing-responsive {
+@if $spacing-responsive {
+  @each $space, $value in $spacing {
     @each $breakpoint, $breakpoint-value in $breakpoints {
-      @include mediaquery($breakpoint) {
+      @include breakpoint($breakpoint) {
         @include paddingmargin($space, $value, $breakpoint);
 
         @each $location, $location-value in $spacing-locations {

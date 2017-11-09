@@ -20,7 +20,7 @@ $bg-responsive: false !default;
 
     @if $bg-responsive {
       @each $breakpoint, $breakpoint-value in $breakpoints {
-        @include mediaquery($breakpoint) {
+        @include breakpoint($breakpoint) {
           .#{$breakpoint}\:bg-#{$color}-#{$shade} {
             background-color: $value;
           }

@@ -20,7 +20,7 @@ $grid-single: false !default;
     }
 
     @each $breakpoint, $breakpoint-value in $breakpoints {
-      @include mediaquery($breakpoint) {
+      @include breakpoint($breakpoint) {
         .#{$breakpoint}\:w-#{$i} {
           width: (100% / $grid-size) * $i;
         }
@@ -34,7 +34,7 @@ $grid-single: false !default;
         @include widthify($i, $j);
 
         @each $breakpoint, $breakpoint-value in $breakpoints {
-          @include mediaquery($breakpoint) {
+          @include breakpoint($breakpoint) {
             @include widthify($i, $j, $breakpoint);
           }
         }
@@ -43,7 +43,7 @@ $grid-single: false !default;
       @include widthify($i, 1);
 
       @each $breakpoint, $breakpoint-value in $breakpoints {
-        @include mediaquery($breakpoint) {
+        @include breakpoint($breakpoint) {
           @include widthify($i, 1, $breakpoint);
         }
       }

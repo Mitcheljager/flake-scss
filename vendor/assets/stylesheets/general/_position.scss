@@ -1,0 +1,56 @@
+$positions-responsive: true !default;
+
+$positions: () !default;
+@if $positions == () {
+  $positions: (
+    fixed,
+    relative,
+    absolute,
+    static,
+    sticky
+  );
+}
+
+@each $position in $positions {
+  .#{$position} {
+    position: $position;
+  }
+
+  @if $positions-responsive {
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include breakpoint($breakpoint) {
+        .#{$breakpoint}\:#{$position} {
+          position: $position;
+        }
+      }
+    }
+  }
+}
+
+$pins-responsive: true !default;
+
+$pins: () !default;
+@if $pins == () {
+  $pins: (
+    t: "top",
+    r: "right",
+    b: "bottom",
+    l: "left"
+  );
+}
+
+@each $pin, $value in $pins {
+  .pin-#{$pin} {
+    #{$value}: 0;
+  }
+
+  @if $pins-responsive {
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include breakpoint($breakpoint) {
+        .#{$breakpoint}\:pin-#{$pin} {
+          #{$value}: 0;
+        }
+      }
+    }
+  }
+}
