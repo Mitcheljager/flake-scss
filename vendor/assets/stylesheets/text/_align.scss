@@ -10,10 +10,12 @@ $align: (
   .text-#{$value} {
     text-align: $value;
   }
+}
 
-  @if $text-align-responsive {
-    @each $breakpoint, $breakpoint-value in $breakpoints {
-      @include breakpoint($breakpoint) {
+@if $text-align-responsive {
+  @each $breakpoint, $breakpoint-value in $breakpoints {
+    @include breakpoint($breakpoint) {
+      @each $value in $align {
         .#{$breakpoint}\:text-#{$value} {
           text-align: $value;
         }

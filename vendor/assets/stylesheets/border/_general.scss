@@ -37,10 +37,12 @@ $standard-border: 1px solid black;
 
 @each $border, $value in $borders {
   @include makeBorder($border, $value);
+}
 
-  @if $border-responsive {
-    @each $breakpoint, $breakpoint-value in $breakpoints {
-      @include breakpoint($breakpoint) {
+@if $border-responsive {
+  @each $breakpoint, $breakpoint-value in $breakpoints {
+    @include breakpoint($breakpoint) {
+      @each $border, $value in $borders {
         @include makeBorder($border, $value, $breakpoint);
       }
     }

@@ -15,10 +15,12 @@ $positions: () !default;
   .#{$position} {
     position: $position;
   }
+}
 
-  @if $positions-responsive {
-    @each $breakpoint, $breakpoint-value in $breakpoints {
-      @include breakpoint($breakpoint) {
+@if $positions-responsive {
+  @each $breakpoint, $breakpoint-value in $breakpoints {
+    @include breakpoint($breakpoint) {
+      @each $position in $positions {
         .#{$breakpoint}\:#{$position} {
           position: $position;
         }
@@ -43,10 +45,12 @@ $pins: () !default;
   .pin-#{$pin} {
     #{$value}: 0;
   }
+}
 
-  @if $pins-responsive {
-    @each $breakpoint, $breakpoint-value in $breakpoints {
-      @include breakpoint($breakpoint) {
+@if $pins-responsive {
+  @each $breakpoint, $breakpoint-value in $breakpoints {
+    @include breakpoint($breakpoint) {
+      @each $pin, $value in $pins {
         .#{$breakpoint}\:pin-#{$pin} {
           #{$value}: 0;
         }

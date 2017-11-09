@@ -17,10 +17,12 @@ $display: () !default;
   .#{$property} {
     display: $property;
   }
+}
 
-  @if $display-responsive {
-    @each $breakpoint, $breakpoint-value in $breakpoints {
-      @include breakpoint($breakpoint) {
+@if $display-responsive {
+  @each $breakpoint, $breakpoint-value in $breakpoints {
+    @include breakpoint($breakpoint) {
+      @each $property in $display {
         .#{$breakpoint}\:#{$property} {
           display: $property;
         }

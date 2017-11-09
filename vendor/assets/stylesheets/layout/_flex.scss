@@ -72,10 +72,25 @@ $flex-list: (
         .#{$classstart}-#{$value-name} {
           #{$property}: #{$value-value};
         }
+      }
+    }
+  }
+}
 
-        @if $flex-responsive {
-          @each $breakpoint, $breakpoint-value in $breakpoints {
-            @include breakpoint($breakpoint) {
+@if $flex-responsive {
+  @each $breakpoint, $breakpoint-value in $breakpoints {
+    @include breakpoint($breakpoint) {
+      @each $property in $flex {
+        $medium: map-get($flex-list, $property);
+        $classstart: "";
+
+        @each $name, $value in $medium {
+          @if $name == "class" {
+            $classstart: #{$value};
+          }
+
+          @if $name == "values" {
+            @each $value-name, $value-value in $value {
               .#{$breakpoint}\:#{$classstart}-#{$value-name} {
                 #{$property}: #{$value-value};
               }
