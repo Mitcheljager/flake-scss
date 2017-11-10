@@ -1,21 +1,25 @@
 @import "helpers/functions",
         "helpers/breakpoints";
 
-@import "general/general",
-        "general/display",
-        "general/position";
-
 @import "background/colors";
 
 @import "border/general",
-        "border/colors";
+        "border/colors",
+        "border/radius";
 
 @import "text/colors",
         "text/fonts",
         "text/style",
-        "text/align";
+        "text/align",
+        "text/sizes";
 
 @import "sizing/spacing",
         "sizing/grid";
 
 @import "layout/flex";
+
+@import "shadows/shadows";
+
+@import "general/display",
+        "general/position",
+        "general/general";

@@ -1,7 +1,7 @@
 @import "../helpers/colors-list";
 
 $bg-hover: true !default;
-$bg-responsive: false !default;
+$bg-responsive: true !default;
 
 @each $color in $colors {
   $medium: map-get($colors-list, $color);
@@ -17,10 +17,16 @@ $bg-responsive: false !default;
     #{$hover} {
       background-color: $value;
     }
+  }
+}
 
-    @if $bg-responsive {
-      @each $breakpoint, $breakpoint-value in $breakpoints {
-        @include breakpoint($breakpoint) {
+@if $bg-responsive {
+  @each $breakpoint, $breakpoint-value in $breakpoints {
+    @include breakpoint($breakpoint) {
+      @each $color in $colors {
+        $medium: map-get($colors-list, $color);
+
+        @each $shade, $value in $medium {
           .#{$breakpoint}\:bg-#{$color}-#{$shade} {
             background-color: $value;
           }

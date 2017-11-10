@@ -4,9 +4,9 @@ $spacing: () !default;
 @if $spacing == () {
   $spacing: (
     0: 0,
-    1: .5rem,
-    2: 1rem,
-    3: 2rem,
+    1: .25rem,
+    2: .5rem,
+    3: 1.5rem,
     4: 3rem,
     5: 4rem,
     auto: auto

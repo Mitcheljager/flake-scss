@@ -18,7 +18,7 @@ $style: (
 );
 
 @each $value in $style {
-  .text-#{$value} {
+  .font-#{$value} {
     font-style: $value;
   }
 }
@@ -31,7 +31,7 @@ $weight: (
 );
 
 @each $value in $weight {
-  .text-#{$value} {
+  .font-#{$value} {
     font-weight: $value;
   }
 }
