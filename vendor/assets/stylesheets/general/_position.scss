@@ -15,6 +15,8 @@ $positions: () !default;
   .#{$position} {
     position: $position;
   }
+
+  $addme: add-to-apply-map(#{$position}, "position", "#{$position}");
 }
 
 @if $positions-responsive {
@@ -45,6 +47,8 @@ $pins: () !default;
   .pin-#{$pin} {
     #{$value}: 0;
   }
+
+  $addme: add-to-apply-map(pin-#{$pin}, "#{$value}", "0");
 }
 
 @if $pins-responsive {

@@ -42,6 +42,11 @@ $border-sizes: () !default;
   .#{$bp}b#{$space}-0 {
     border#{$sep}#{$value}: 0;
   }
+
+  @if $breakpoint == 0 {
+    $addme: add-to-apply-map(b#{$space}-#{$size}, "border#{$sep}#{$value}", "#{$size}px solid black");
+    $addme: add-to-apply-map(b#{$space}-0, "border#{$sep}#{$value}", "0");
+  }
 }
 
 @each $border, $value in $borders {

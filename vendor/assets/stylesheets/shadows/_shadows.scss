@@ -10,4 +10,6 @@ $shadows: (
   .shadow-#{$shadow} {
     box-shadow: #{$value};
   }
+
+  $addme: add-to-apply-map(shadow-#{$shadow}, "box-shadow", "#{$value}");
 }

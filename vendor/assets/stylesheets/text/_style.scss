@@ -9,6 +9,8 @@ $decoration: (
   .text-#{$value} {
     text-decoration: $value;
   }
+
+  $addme: add-to-apply-map(text-#{$value}, "text-decoration", "#{$value}");
 }
 
 $style: (
@@ -21,6 +23,8 @@ $style: (
   .font-#{$value} {
     font-style: $value;
   }
+
+  $addme: add-to-apply-map(font-#{$value}, "font-style", "#{$value}");
 }
 
 $weight: (
@@ -34,6 +38,8 @@ $weight: (
   .font-#{$value} {
     font-weight: $value;
   }
+
+  $addme: add-to-apply-map(font-#{$value}, "font-weight", "#{$value}");
 }
 
 $transform: (
@@ -46,4 +52,6 @@ $transform: (
   .text-#{$value} {
     text-transform: $value;
   }
+
+  $addme: add-to-apply-map(text-#{$value}, "text-transform", "#{$value}");
 }

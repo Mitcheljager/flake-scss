@@ -18,9 +18,15 @@ $border-color-responsive: false !default;
       border-color: $value;
     }
 
-    @if $border-color-responsive {
-      @each $breakpoint, $breakpoint-value in $breakpoints {
-        @include breakpoint($breakpoint) {
+    $addme: add-to-apply-map(b-#{$color}-#{$shade}, "border-color", "#{$value}");
+  }
+}
+
+@if $border-color-responsive {
+  @each $breakpoint, $breakpoint-value in $breakpoints {
+    @include breakpoint($breakpoint) {
+      @each $color in $colors {
+        @each $shade, $value in $medium {
           .#{$breakpoint}\:bg-#{$color}-#{$shade} {
             border-color: $value;
           }

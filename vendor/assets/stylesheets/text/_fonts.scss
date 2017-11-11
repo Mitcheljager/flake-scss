@@ -65,4 +65,6 @@ $font-families: () !default;
   .font-#{$font-family} {
     font-family: $value;
   }
+
+  $addme: add-to-apply-map(font-#{$font-family}, "font-family", "#{$value}");
 }

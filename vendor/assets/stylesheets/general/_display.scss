@@ -12,11 +12,11 @@ $display: () !default;
 }
 
 @each $property in $display {
-  $hover: "";
-
   .#{$property} {
     display: $property;
   }
+
+  $addme: add-to-apply-map(#{$property}, "display", "#{$property}");
 }
 
 @if $display-responsive {

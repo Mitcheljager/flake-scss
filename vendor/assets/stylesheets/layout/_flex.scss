@@ -72,6 +72,8 @@ $flex-list: (
         .#{$classstart}-#{$value-name} {
           #{$property}: #{$value-value};
         }
+
+        $addme: add-to-apply-map(#{$classstart}-#{$value-name}, "#{$property}", "#{$value-value}");
       }
     }
   }
