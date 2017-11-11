@@ -5,7 +5,7 @@ $sizes: (
 );
 
 @each $size, $value in $sizes {
-  .font-size-#{$size} {
+  .text-#{$size} {
     font-size: $value;
   }
 }

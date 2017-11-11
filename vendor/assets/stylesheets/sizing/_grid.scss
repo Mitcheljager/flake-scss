@@ -1,4 +1,4 @@
-$grid-size: 12;
+$grid-size: 12 !default;
 $grid-full: true !default;
 $grid-single: false !default;
 
@@ -11,8 +11,11 @@ $grid-single: false !default;
   .#{$bp}w-#{$division}\/#{$divide} {
     width: (100% / $divide) * $division;
   }
-}
 
+  @if $breakpoint == 0 {
+    $addme: add-to-apply-map("#{$bp}w-#{$division}/#{$divide}", "width", "#{(100% / $divide) * $division}");
+  }
+}
 
 // No Breakpoints
 @if $grid-single {
@@ -20,6 +23,8 @@ $grid-single: false !default;
     .w-#{$i} {
       width: (100% / $grid-size) * $i;
     }
+
+    $addme: add-to-apply-map("w-#{$i}", "width", "#{(100% / $grid-size) * $i}");
   }
 } @else {
   @for $i from 1 through $grid-size {
@@ -64,4 +69,8 @@ $grid-single: false !default;
   .w-max {
     max-width: map-get($breakpoints, mw);
   }
+}
+
+.h-1\/1 {
+  height: 100%;
 }

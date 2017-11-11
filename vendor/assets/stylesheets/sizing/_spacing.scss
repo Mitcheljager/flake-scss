@@ -5,7 +5,7 @@ $spacing: () !default;
   $spacing: (
     0: 0,
     1: .25rem,
-    2: .5rem,
+    2: .75rem,
     3: 1.5rem,
     4: 3rem,
     5: 4rem,
@@ -59,6 +59,8 @@ $types: (
         }
 
         #{$type-value}#{$sep}#{$loc}: $value;
+
+        $addme: add-to-apply-map(#{$bp}#{$type}#{$l}#{$s}, "#{$type-value}#{$sep}#{$loc}", "#{$value};");
       }
     }
   }

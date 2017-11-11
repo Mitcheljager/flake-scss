@@ -1,0 +1,9 @@
+@mixin apply($keys) {
+  @each $key in $keys {
+    $class: map-get($apply-classes, $key);
+
+    @each $key, $value in $class {
+      #{$key}: #{$value};
+    }
+  }
+}

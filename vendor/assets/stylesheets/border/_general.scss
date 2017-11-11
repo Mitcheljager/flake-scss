@@ -12,9 +12,18 @@ $borders: () !default;
   );
 }
 
-$standard-border: 1px solid black;
+$border-sizes: () !default;
+@if $border-sizes == () {
+  $border-sizes: (
+    1,
+    2,
+    3,
+    4,
+    5
+  );
+}
 
-@mixin makeBorder($space, $value, $breakpoint: 0) {
+@mixin makeBorder($space, $value, $size, $breakpoint: 0) {
   $bp: "";
   $sep: "";
 
@@ -26,8 +35,8 @@ $standard-border: 1px solid black;
     $sep: "-";
   }
 
-  .#{$bp}b#{$space} {
-    border#{$sep}#{$value}: $standard-border;
+  .#{$bp}b#{$space}-#{$size} {
+    border#{$sep}#{$value}: #{$size}px solid black;
   }
 
   .#{$bp}b#{$space}-0 {
@@ -36,14 +45,18 @@ $standard-border: 1px solid black;
 }
 
 @each $border, $value in $borders {
-  @include makeBorder($border, $value);
+  @each $size in $border-sizes {
+    @include makeBorder($border, $value, $size);
+  }
 }
 
 @if $border-responsive {
   @each $breakpoint, $breakpoint-value in $breakpoints {
     @include breakpoint($breakpoint) {
       @each $border, $value in $borders {
-        @include makeBorder($border, $value, $breakpoint);
+        @each $size in $border-sizes {
+          @include makeBorder($border, $value, $size, $breakpoint);
+        }
       }
     }
   }
