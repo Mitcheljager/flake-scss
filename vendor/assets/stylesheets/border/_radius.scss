@@ -1,12 +1,18 @@
-$radius: (
-  1: 1px,
-  2: 2px,
-  3: 3px,
-  4: 4px,
-  5: 5px,
-  round: 50%,
-  rounded: 999px
-);
+$radius-responsive: false !default;
+
+$radius: () !default;
+@if $radius == () {
+  $radius: (
+    0: 0,
+    1: 1px,
+    2: 2px,
+    3: 3px,
+    4: 4px,
+    5: 5px,
+    round: 50%,
+    rounded: 999px
+  );
+}
 
 @each $radi, $value in $radius {
   .radius-#{$radi} {
@@ -14,4 +20,16 @@ $radius: (
   }
 
   $addme: add-to-apply-map(radius-#{$radi}, "border-radius", "#{$value}");
+}
+
+@if $radius-responsive {
+  @each $breakpoint, $breakpoint-value in $breakpoints {
+    @include breakpoint($breakpoint) {
+      @each $radi, $value in $radius {
+        .#{$breakpoint}\:radius-#{$radi} {
+          border-radius: $value;
+        }
+      }
+    }
+  }
 }

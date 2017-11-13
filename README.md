@@ -1,6 +1,6 @@
 # Flake-scss
 
-[Work in Progress!] Documentation at [flakeframework.herokuapp.com](https://flakeframework.herokuapp.com).
+[Work in Progress!] Documentation at [flakecss.com](https://flakecss.com).
 
 ## Installation
 
