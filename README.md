@@ -1,6 +1,6 @@
 # Flake-scss
 
-[Work in Progress!] Documentation at [flakecss.com](https://flakecss.com).
+[Work in Progress!] Documentation at [flakecss.com](https://www.flakecss.com).
 
 ## Installation
 
