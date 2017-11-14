@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Mitcheljager"]
   spec.email         = ["mitchel_jager@hotmail.com"]
 
-  spec.summary       = "Highly customizable Utility SCSS Framework"
+  spec.summary       = "Highly customizable Utility SCSS and CSS Framework"
   spec.homepage      = "https://github.com/Mitcheljager/flake-scss"
   spec.license       = "MIT"
 
