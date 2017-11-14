@@ -10,15 +10,15 @@ $border-color-responsive: false !default;
     $hover: "";
 
     @if $border-color-hover {
-      $hover: ", .hover\\:b-#{$color}-#{$shade}:hover";
+      $hover: ", .hover\\:b-#{"" + $color}-#{"" + $shade}:hover";
     }
 
-    .b-#{$color}-#{$shade}
+    .b-#{"" + $color}-#{"" + $shade}
     #{$hover} {
       border-color: $value;
     }
 
-    $addme: add-to-apply-map(b-#{$color}-#{$shade}, "border-color", "#{$value}");
+    $addme: add-to-apply-map(b-#{"" + $color}-#{"" + $shade}, "border-color", "#{$value}");
   }
 }
 
@@ -27,7 +27,7 @@ $border-color-responsive: false !default;
     @include breakpoint($breakpoint) {
       @each $color in $colors {
         @each $shade, $value in $medium {
-          .#{$breakpoint}\:bg-#{$color}-#{$shade} {
+          .#{$breakpoint}\:bg-#{"" + $color}-#{"" + $shade} {
             border-color: $value;
           }
         }

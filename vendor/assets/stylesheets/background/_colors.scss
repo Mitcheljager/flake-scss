@@ -10,15 +10,15 @@ $bg-responsive: true !default;
     $hover: "";
 
     @if $bg-hover {
-      $hover: ", .hover\\:bg-#{$color}-#{$shade}:hover";
+      $hover: ", .hover\\:bg-#{"" + $color}-#{"" + $shade}:hover";
     }
 
-    .bg-#{$color}-#{$shade}
+    .bg-#{"" + $color}-#{"" + $shade}
     #{$hover} {
       background-color: $value;
     }
 
-    $addme: add-to-apply-map(bg-#{$color}-#{$shade}, "background-color", "#{$value}");
+    $addme: add-to-apply-map(bg-#{"" + $color}-#{"" + $shade}, "background-color", "#{$value}");
   }
 }
 
@@ -29,7 +29,7 @@ $bg-responsive: true !default;
         $medium: map-get($colors-list, $color);
 
         @each $shade, $value in $medium {
-          .#{$breakpoint}\:bg-#{$color}-#{$shade} {
+          .#{$breakpoint}\:bg-#{"" + $color}-#{"" + $shade} {
             background-color: $value;
           }
         }
