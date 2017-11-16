@@ -1,3 +1,20 @@
-.z--1 {
-  z-index: 0;
+$z-index: () !default;
+@if $z-index == () {
+  $z-index: (
+    -1,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  );
+}
+
+@each $value in $z-index {
+  .z-#{$value} {
+    z-index: $value;
+  }
+
+  $addme: add-to-apply-map(#{$z-index}, "z-index", "#{$z-index}");
 }

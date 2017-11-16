@@ -14,7 +14,7 @@ $sans-serif:  Frutiger,
               "Helvetica Neue",
               Helvetica,
               Arial,
-              sans-serif;
+              sans-serif !default;
 
 $serif: "Palatino Linotype",
         Palatino,
@@ -32,7 +32,7 @@ $serif: "Palatino Linotype",
         "Century Schoolbook",
         "Century Schoolbook L",
         Georgia,
-        serif;
+        serif !default;
 
 $monospace: "Palatino Linotype",
             Palatino,
@@ -50,7 +50,7 @@ $monospace: "Palatino Linotype",
             "Century Schoolbook",
             "Century Schoolbook L",
             Georgia,
-            serif;
+            serif !default;
 
 $font-families: () !default;
 @if $font-families == () {
