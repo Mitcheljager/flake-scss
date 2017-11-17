@@ -13,3 +13,11 @@
 
   @return $to-add-to-map;
 }
+
+@function color($color, $shade) {
+  @return map-get(map-get($colors-list, $color), $shade);
+}
+
+@function spacing($space) {
+  @return map-get($spacing, $space);
+}

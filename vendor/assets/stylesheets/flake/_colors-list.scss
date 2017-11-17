@@ -1,6 +1,9 @@
 // scss-lint:disable ColorKeyword
 // scss-lint:disable ColorVariable
 
+$theme-colors: () !default;
+$full-colors: true !default;
+
 $colors: () !default;
 @if $colors == () {
   $colors: (
