@@ -108,6 +108,8 @@ $types: (
       margin-left: $value * -1;
       margin-right: $value * -1;
     }
+
+    $addme: add-to-apply-map(-mx-#{$space}, ("margin-left": "", "margin-right": ""), "#{$value * -1}");
   }
 }
 
