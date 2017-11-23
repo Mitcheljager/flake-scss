@@ -16,5 +16,5 @@ $z-index: () !default;
     z-index: $value;
   }
 
-  $addme: add-to-apply-map(#{$z-index}, "z-index", "#{$z-index}");
+  $addme: add-to-apply-map(z-#{$value}, "z-index", "#{$value}");
 }
