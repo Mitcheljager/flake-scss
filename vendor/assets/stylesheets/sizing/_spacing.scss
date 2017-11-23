@@ -14,7 +14,6 @@ $spacing: () !default;
 }
 
 $spacing-locations: (
-  "": "auto",
   t: "top",
   r: "right",
   b: "bottom",
@@ -70,9 +69,7 @@ $types: (
   @include paddingmargin($space, $value);
 
   @each $location, $location-value in $spacing-locations {
-    @if $location != "" {
-      @include paddingmargin($space, $value, 0, $location, $location-value);
-    }
+    @include paddingmargin($space, $value, 0, $location, $location-value);
   }
 }
 
@@ -83,9 +80,7 @@ $types: (
         @include paddingmargin($space, $value, $breakpoint);
 
         @each $location, $location-value in $spacing-locations {
-          @if $location != "" {
-            @include paddingmargin($space, $value, $breakpoint, $location, $location-value);
-          }
+          @include paddingmargin($space, $value, $breakpoint, $location, $location-value);
         }
       }
     }
