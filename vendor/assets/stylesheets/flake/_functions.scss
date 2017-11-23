@@ -3,14 +3,29 @@
 }
 
 @function add-to-apply-map($classname, $property, $value) {
-  $to-add-to-map: (
-    $classname: (
-      $property: $value
-    )
-  );
+  $to-add-to-map: "";
+
+  @if type-of($property) == "map" {
+    $property-stack: ();
+
+    @each $prop in $property {
+      $property-stack: map-merge($property-stack, ("#{$prop}": $value));
+    }
+
+    $to-add-to-map: (
+      $classname: (
+        $property-stack
+      )
+    );
+  } @else {
+    $to-add-to-map: (
+      $classname: (
+        $property: $value
+      )
+    );
+  }
 
   $apply-classes: map-merge($apply-classes, $to-add-to-map) !global;
-
   @return $to-add-to-map;
 }
 

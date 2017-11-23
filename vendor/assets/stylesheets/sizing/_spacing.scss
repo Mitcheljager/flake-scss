@@ -19,12 +19,12 @@ $spacing-locations: (
   b: "bottom",
   l: "left",
   y: (
-    "top",
-    "bottom"
+    top: "top",
+    bottom: "bottom"
   ), x: (
-    "left",
-    "right"
-  ),
+    left: "left",
+    right: "right"
+  )
 );
 
 $types: (
@@ -51,15 +51,30 @@ $types: (
     }
 
     .#{$bp}#{$type}#{$l}#{$s} {
-      @each $loc in $location-value {
+      @if type-of($location-value) == "map" {
+        $properties: ();
+        @each $loc, $loc-value in $location-value {
+          $sep: "-";
+
+          $map: (#{$type-value}#{$sep}#{$loc-value}: "");
+          $properties: map-merge($properties, $map);
+          #{$type-value}#{$sep}#{$loc-value}: $value;
+        }
+
+        @if $bp == "" {
+          $addme: add-to-apply-map(#{$bp}#{$type}#{$l}#{$s}, $properties, $value);
+        }
+      } @else {
         $sep: "";
-        @if $loc != "" {
+        @if $location-value != "" {
           $sep: "-";
         }
 
-        #{$type-value}#{$sep}#{$loc}: $value;
+        #{$type-value}#{$sep}#{$location-value}: $value;
 
-        $addme: add-to-apply-map(#{$bp}#{$type}#{$l}#{$s}, "#{$type-value}#{$sep}#{$loc}", "#{$value}");
+        @if $bp == "" {
+          $addme: add-to-apply-map(#{$bp}#{$type}#{$l}#{$s}, "#{$type-value}#{$sep}#{$location-value}", "#{$value}");
+        }
       }
     }
   }
@@ -92,6 +107,21 @@ $types: (
     .-mx-#{$space} {
       margin-left: $value * -1;
       margin-right: $value * -1;
+    }
+  }
+}
+
+@if $spacing-responsive {
+  @each $breakpoint, $breakpoint-value in $breakpoints {
+    @include breakpoint($breakpoint) {
+      @each $space, $value in $spacing {
+        @if type-of($value) == "number" {
+          .#{$breakpoint}\:-mx-#{$space} {
+            margin-left: $value * -1;
+            margin-right: $value * -1;
+          }
+        }
+      }
     }
   }
 }
