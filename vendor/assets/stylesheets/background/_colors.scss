@@ -1,64 +1,64 @@
-@import "../flake/colors-list";
-
 $bg-hover: true !default;
 $bg-responsive: true !default;
 
-@if $theme-colors != () {
-  @each $color, $value in $theme-colors {
-    $hover: "";
-
-    @if $bg-hover {
-      $hover: ", .hover\\:bg-#{"" + $color}:hover";
-    }
-
-    .bg-#{"" + $color}
-    #{$hover} {
-      background-color: #{$value};
-    }
-
-    $addme: add-to-apply-map(bg-#{"" + $color}, "background-color", "#{$value}");
-  }
-}
-
-@if $full-colors {
-  @each $color in $colors {
-    $medium: map-get($colors-list, $color);
-
-    @each $shade, $value in $medium {
+@if index($components, background-colors) {
+  @if $theme-colors != () {
+    @each $color, $value in $theme-colors {
       $hover: "";
 
       @if $bg-hover {
-        $hover: ", .hover\\:bg-#{"" + $color}-#{"" + $shade}:hover";
+        $hover: ", .hover\\:bg-#{"" + $color}:hover";
       }
 
-      .bg-#{"" + $color}-#{"" + $shade}
+      .bg-#{"" + $color}
       #{$hover} {
-        background-color: $value;
+        background-color: #{$value};
       }
 
-      $addme: add-to-apply-map(bg-#{"" + $color}-#{"" + $shade}, "background-color", "#{$value}");
+      $addme: add-to-apply-map(bg-#{"" + $color}, "background-color", "#{$value}");
     }
   }
-}
 
-@if $bg-responsive {
-  @each $breakpoint, $breakpoint-value in $breakpoints {
-    @include breakpoint($breakpoint) {
-      @if $theme-colors != () {
-        @each $color, $value in $theme-colors {
-          .#{$breakpoint}\:bg-#{"" + $color} {
-            background-color: #{$value};
+  @if $full-colors {
+    @each $color in $colors {
+      $medium: map-get($colors-list, $color);
+
+      @each $shade, $value in $medium {
+        $hover: "";
+
+        @if $bg-hover {
+          $hover: ", .hover\\:bg-#{"" + $color}-#{"" + $shade}:hover";
+        }
+
+        .bg-#{"" + $color}-#{"" + $shade}
+        #{$hover} {
+          background-color: $value;
+        }
+
+        $addme: add-to-apply-map(bg-#{"" + $color}-#{"" + $shade}, "background-color", "#{$value}");
+      }
+    }
+  }
+
+  @if $bg-responsive {
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include breakpoint($breakpoint) {
+        @if $theme-colors != () {
+          @each $color, $value in $theme-colors {
+            .#{$breakpoint}\:bg-#{"" + $color} {
+              background-color: #{$value};
+            }
           }
         }
-      }
 
-      @if $full-colors {
-        @each $color in $colors {
-          $medium: map-get($colors-list, $color);
+        @if $full-colors {
+          @each $color in $colors {
+            $medium: map-get($colors-list, $color);
 
-          @each $shade, $value in $medium {
-            .#{$breakpoint}\:bg-#{"" + $color}-#{"" + $shade} {
-              background-color: $value;
+            @each $shade, $value in $medium {
+              .#{$breakpoint}\:bg-#{"" + $color}-#{"" + $shade} {
+                background-color: $value;
+              }
             }
           }
         }

@@ -1,1 +1,21 @@
 $apply-classes: () !global;
+
+$components: (
+  transition,
+  background-colors,
+  border-colors,
+  borders,
+  border-radius,
+  display,
+  position,
+  z-index,
+  flex,
+  shadows,
+  grid,
+  spacing,
+  text-align,
+  text-colors,
+  fonts,
+  font-sizes,
+  font-style,
+) !default;

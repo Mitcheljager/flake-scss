@@ -13,27 +13,29 @@ $shadows: () !default;
   );
 }
 
-@each $shadow, $value in $shadows {
-  $hover: "";
+@if index($components, shadows) {
+  @each $shadow, $value in $shadows {
+    $hover: "";
 
-  @if $shadows-hover {
-    $hover: ", .hover\\:shadow-#{$shadow}:hover";
+    @if $shadows-hover {
+      $hover: ", .hover\\:shadow-#{$shadow}:hover";
+    }
+
+    .shadow-#{$shadow}
+    #{$hover} {
+      box-shadow: #{$value};
+    }
+
+    $addme: add-to-apply-map(shadow-#{$shadow}, "box-shadow", "#{$value}");
   }
 
-  .shadow-#{$shadow}
-  #{$hover} {
-    box-shadow: #{$value};
-  }
-
-  $addme: add-to-apply-map(shadow-#{$shadow}, "box-shadow", "#{$value}");
-}
-
-@if $shadows-responsive {
-  @each $breakpoint, $breakpoint-value in $breakpoints {
-    @include breakpoint($breakpoint) {
-      @each $shadow, $value in $shadows {
-        .#{$breakpoint}\:shadow-#{$shadow} {
-          box-shadow: #{$value};
+  @if $shadows-responsive {
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include breakpoint($breakpoint) {
+        @each $shadow, $value in $shadows {
+          .#{$breakpoint}\:shadow-#{$shadow} {
+            box-shadow: #{$value};
+          }
         }
       }
     }

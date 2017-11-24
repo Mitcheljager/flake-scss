@@ -15,20 +15,22 @@ $radius: () !default;
   );
 }
 
-@each $radi, $value in $radius {
-  .radius-#{$radi} {
-    border-radius: $value;
+@if index($components, border-radius) {
+  @each $radi, $value in $radius {
+    .radius-#{$radi} {
+      border-radius: $value;
+    }
+
+    $addme: add-to-apply-map(radius-#{$radi}, "border-radius", "#{$value}");
   }
 
-  $addme: add-to-apply-map(radius-#{$radi}, "border-radius", "#{$value}");
-}
-
-@if $radius-responsive {
-  @each $breakpoint, $breakpoint-value in $breakpoints {
-    @include breakpoint($breakpoint) {
-      @each $radi, $value in $radius {
-        .#{$breakpoint}\:radius-#{$radi} {
-          border-radius: $value;
+  @if $radius-responsive {
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include breakpoint($breakpoint) {
+        @each $radi, $value in $radius {
+          .#{$breakpoint}\:radius-#{$radi} {
+            border-radius: $value;
+          }
         }
       }
     }

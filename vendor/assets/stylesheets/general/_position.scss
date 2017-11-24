@@ -11,52 +11,56 @@ $positions: () !default;
   );
 }
 
-@each $position in $positions {
-  .#{$position} {
-    position: $position;
+@if index($components, position) {
+  @each $position in $positions {
+    .#{$position} {
+      position: $position;
+    }
+
+    $addme: add-to-apply-map(#{$position}, "position", "#{$position}");
   }
 
-  $addme: add-to-apply-map(#{$position}, "position", "#{$position}");
-}
-
-@if $positions-responsive {
-  @each $breakpoint, $breakpoint-value in $breakpoints {
-    @include breakpoint($breakpoint) {
-      @each $position in $positions {
-        .#{$breakpoint}\:#{$position} {
-          position: $position;
+  @if $positions-responsive {
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include breakpoint($breakpoint) {
+        @each $position in $positions {
+          .#{$breakpoint}\:#{$position} {
+            position: $position;
+          }
         }
       }
     }
   }
 }
 
-$pins-responsive: true !default;
+@if index($components, position) {
+  $pins-responsive: true !default;
 
-$pins: () !default;
-@if $pins == () {
-  $pins: (
-    t: "top",
-    r: "right",
-    b: "bottom",
-    l: "left"
-  );
-}
-
-@each $pin, $value in $pins {
-  .pin-#{$pin} {
-    #{$value}: 0;
+  $pins: () !default;
+  @if $pins == () {
+    $pins: (
+      t: "top",
+      r: "right",
+      b: "bottom",
+      l: "left"
+    );
   }
 
-  $addme: add-to-apply-map(pin-#{$pin}, "#{$value}", "0");
-}
+  @each $pin, $value in $pins {
+    .pin-#{$pin} {
+      #{$value}: 0;
+    }
 
-@if $pins-responsive {
-  @each $breakpoint, $breakpoint-value in $breakpoints {
-    @include breakpoint($breakpoint) {
-      @each $pin, $value in $pins {
-        .#{$breakpoint}\:pin-#{$pin} {
-          #{$value}: 0;
+    $addme: add-to-apply-map(pin-#{$pin}, "#{$value}", "0");
+  }
+
+  @if $pins-responsive {
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include breakpoint($breakpoint) {
+        @each $pin, $value in $pins {
+          .#{$breakpoint}\:pin-#{$pin} {
+            #{$value}: 0;
+          }
         }
       }
     }

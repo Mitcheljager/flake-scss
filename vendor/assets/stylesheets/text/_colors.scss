@@ -1,41 +1,41 @@
-@import "../flake/colors-list";
-
 $text-colors-hover: true !default;
 
-@if $theme-colors != () {
-  @each $color, $value in $theme-colors {
-    $hover: "";
-
-    @if $text-colors-hover {
-      $hover: ", .hover\\:text-#{"" + $color}:hover";
-    }
-
-    .text-#{"" + $color}
-    #{$hover} {
-      color: #{$value};
-    }
-
-    $addme: add-to-apply-map(text-#{"" + $color}, "color", "#{$value}");
-  }
-}
-
-@if $full-colors {
-  @each $color in $colors {
-    $medium: map-get($colors-list, $color);
-
-    @each $shade, $value in $medium {
+@if index($components, text-colors) {
+  @if $theme-colors != () {
+    @each $color, $value in $theme-colors {
       $hover: "";
 
       @if $text-colors-hover {
-        $hover: ", .hover\\:text-#{"" + $color}-#{"" + $shade}:hover";
+        $hover: ", .hover\\:text-#{"" + $color}:hover";
       }
 
-      .text-#{"" + $color}-#{"" + $shade}
+      .text-#{"" + $color}
       #{$hover} {
-        color: $value;
+        color: #{$value};
       }
 
-      $addme: add-to-apply-map(text-#{"" + $color}-#{"" + $shade}, "color", "#{$value}");
+      $addme: add-to-apply-map(text-#{"" + $color}, "color", "#{$value}");
+    }
+  }
+
+  @if $full-colors {
+    @each $color in $colors {
+      $medium: map-get($colors-list, $color);
+
+      @each $shade, $value in $medium {
+        $hover: "";
+
+        @if $text-colors-hover {
+          $hover: ", .hover\\:text-#{"" + $color}-#{"" + $shade}:hover";
+        }
+
+        .text-#{"" + $color}-#{"" + $shade}
+        #{$hover} {
+          color: $value;
+        }
+
+        $addme: add-to-apply-map(text-#{"" + $color}-#{"" + $shade}, "color", "#{$value}");
+      }
     }
   }
 }

@@ -11,10 +11,12 @@ $z-index: () !default;
   );
 }
 
-@each $value in $z-index {
-  .z-#{$value} {
-    z-index: $value;
-  }
+@if index($components, z-index) {
+  @each $value in $z-index {
+    .z-#{$value} {
+      z-index: $value;
+    }
 
-  $addme: add-to-apply-map(z-#{$value}, "z-index", "#{$value}");
+    $addme: add-to-apply-map(z-#{$value}, "z-index", "#{$value}");
+  }
 }

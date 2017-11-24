@@ -1,57 +1,68 @@
-$decoration: (
-  overline,
-  line-through,
-  underline,
-  none
-);
+@if index($components, font-style) {
+  $decoration: (
+    overline,
+    line-through,
+    underline,
+    none
+  );
 
-@each $value in $decoration {
-  .text-#{$value} {
-    text-decoration: $value;
+  @each $value in $decoration {
+    .text-#{$value} {
+      text-decoration: $value;
+    }
+
+    $addme: add-to-apply-map(text-#{$value}, "text-decoration", "#{$value}");
   }
-
-  $addme: add-to-apply-map(text-#{$value}, "text-decoration", "#{$value}");
 }
 
-$style: (
-  normal,
-  italic,
-  oblique
-);
+@if index($components, font-style) {
+  $style: (
+    normal,
+    italic,
+    oblique
+  );
 
-@each $value in $style {
-  .font-#{$value} {
-    font-style: $value;
+  @each $value in $style {
+    .font-#{$value} {
+      font-style: $value;
+    }
+
+    $addme: add-to-apply-map(font-#{$value}, "font-style", "#{$value}");
   }
-
-  $addme: add-to-apply-map(font-#{$value}, "font-style", "#{$value}");
 }
 
-$weight: (
-  lighter,
-  normal,
-  bold,
-  bolder
-);
-
-@each $value in $weight {
-  .font-#{$value} {
-    font-weight: $value;
+@if index($components, font-style) {
+  $font-weights: () !default;
+  @if $font-weights == () {
+    $font-weights: (
+      lighter,
+      normal,
+      bold,
+      bolder
+    );
   }
 
-  $addme: add-to-apply-map(font-#{$value}, "font-weight", "#{$value}");
+  @each $value in $font-weights {
+    .font-#{$value} {
+      font-weight: $value;
+    }
+
+    $addme: add-to-apply-map(font-#{$value}, "font-weight", "#{$value}");
+  }
 }
 
-$transform: (
-  lowercase,
-  uppercase,
-  capitalize
-);
+@if index($components, font-style) {
+  $transform: (
+    lowercase,
+    uppercase,
+    capitalize
+  );
 
-@each $value in $transform {
-  .text-#{$value} {
-    text-transform: $value;
+  @each $value in $transform {
+    .text-#{$value} {
+      text-transform: $value;
+    }
+
+    $addme: add-to-apply-map(text-#{$value}, "text-transform", "#{$value}");
   }
-
-  $addme: add-to-apply-map(text-#{$value}, "text-transform", "#{$value}");
 }

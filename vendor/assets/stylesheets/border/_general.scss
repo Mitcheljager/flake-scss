@@ -1,5 +1,6 @@
 $border-hover: true !default;
 $border-responsive: true !default;
+$border-default-color: black;
 
 $borders: () !default;
 @if $borders == () {
@@ -44,23 +45,25 @@ $border-sizes: () !default;
   }
 
   @if $breakpoint == 0 {
-    $addme: add-to-apply-map(b#{$space}-#{$size}, "border#{$sep}#{$value}", "#{$size}px solid black");
+    $addme: add-to-apply-map(b#{$space}-#{$size}, "border#{$sep}#{$value}", "#{$size}px solid #{$border-default-color}");
     $addme: add-to-apply-map(b#{$space}-0, "border#{$sep}#{$value}", "0");
   }
 }
 
-@each $border, $value in $borders {
-  @each $size in $border-sizes {
-    @include makeBorder($border, $value, $size);
+@if index($components, borders) {
+  @each $border, $value in $borders {
+    @each $size in $border-sizes {
+      @include makeBorder($border, $value, $size);
+    }
   }
-}
 
-@if $border-responsive {
-  @each $breakpoint, $breakpoint-value in $breakpoints {
-    @include breakpoint($breakpoint) {
-      @each $border, $value in $borders {
-        @each $size in $border-sizes {
-          @include makeBorder($border, $value, $size, $breakpoint);
+  @if $border-responsive {
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include breakpoint($breakpoint) {
+        @each $border, $value in $borders {
+          @each $size in $border-sizes {
+            @include makeBorder($border, $value, $size, $breakpoint);
+          }
         }
       }
     }

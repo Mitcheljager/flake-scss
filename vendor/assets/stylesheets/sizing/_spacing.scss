@@ -80,47 +80,49 @@ $types: (
   }
 }
 
-@each $space, $value in $spacing {
-  @include paddingmargin($space, $value);
-
-  @each $location, $location-value in $spacing-locations {
-    @include paddingmargin($space, $value, 0, $location, $location-value);
-  }
-}
-
-@if $spacing-responsive {
+@if index($components, spacing) {
   @each $space, $value in $spacing {
-    @each $breakpoint, $breakpoint-value in $breakpoints {
-      @include breakpoint($breakpoint) {
-        @include paddingmargin($space, $value, $breakpoint);
+    @include paddingmargin($space, $value);
 
-        @each $location, $location-value in $spacing-locations {
-          @include paddingmargin($space, $value, $breakpoint, $location, $location-value);
+    @each $location, $location-value in $spacing-locations {
+      @include paddingmargin($space, $value, 0, $location, $location-value);
+    }
+  }
+
+  @if $spacing-responsive {
+    @each $space, $value in $spacing {
+      @each $breakpoint, $breakpoint-value in $breakpoints {
+        @include breakpoint($breakpoint) {
+          @include paddingmargin($space, $value, $breakpoint);
+
+          @each $location, $location-value in $spacing-locations {
+            @include paddingmargin($space, $value, $breakpoint, $location, $location-value);
+          }
         }
       }
     }
   }
-}
 
-@each $space, $value in $spacing {
-  @if type-of($value) == "number" {
-    .-mx-#{$space} {
-      margin-left: $value * -1;
-      margin-right: $value * -1;
+  @each $space, $value in $spacing {
+    @if type-of($value) == "number" {
+      .-mx-#{$space} {
+        margin-left: $value * -1;
+        margin-right: $value * -1;
+      }
+
+      $addme: add-to-apply-map(-mx-#{$space}, ("margin-left": "", "margin-right": ""), "#{$value * -1}");
     }
-
-    $addme: add-to-apply-map(-mx-#{$space}, ("margin-left": "", "margin-right": ""), "#{$value * -1}");
   }
-}
 
-@if $spacing-responsive {
-  @each $breakpoint, $breakpoint-value in $breakpoints {
-    @include breakpoint($breakpoint) {
-      @each $space, $value in $spacing {
-        @if type-of($value) == "number" {
-          .#{$breakpoint}\:-mx-#{$space} {
-            margin-left: $value * -1;
-            margin-right: $value * -1;
+  @if $spacing-responsive {
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include breakpoint($breakpoint) {
+        @each $space, $value in $spacing {
+          @if type-of($value) == "number" {
+            .#{$breakpoint}\:-mx-#{$space} {
+              margin-left: $value * -1;
+              margin-right: $value * -1;
+            }
           }
         }
       }

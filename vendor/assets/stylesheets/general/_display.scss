@@ -11,35 +11,37 @@ $display: () !default;
   );
 }
 
-@each $property in $display {
-  .#{$property} {
-    display: $property;
+@if index($components, display) {
+  @each $property in $display {
+    .#{$property} {
+      display: $property;
+    }
+
+    $addme: add-to-apply-map(#{$property}, "display", "#{$property}");
   }
 
-  $addme: add-to-apply-map(#{$property}, "display", "#{$property}");
-}
-
-@if $display-responsive {
-  @each $breakpoint, $breakpoint-value in $breakpoints {
-    @include breakpoint($breakpoint) {
-      @each $property in $display {
-        .#{$breakpoint}\:#{$property} {
-          display: $property;
+  @if $display-responsive {
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include breakpoint($breakpoint) {
+        @each $property in $display {
+          .#{$breakpoint}\:#{$property} {
+            display: $property;
+          }
         }
       }
     }
   }
-}
 
-.hidden {
-  display: none;
-}
+  .hidden {
+    display: none;
+  }
 
-@if $display-responsive {
-  @each $breakpoint, $breakpoint-value in $breakpoints {
-    @include breakpoint($breakpoint) {
-      .#{$breakpoint}\:hidden {
-        display: none;
+  @if $display-responsive {
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include breakpoint($breakpoint) {
+        .#{$breakpoint}\:hidden {
+          display: none;
+        }
       }
     }
   }

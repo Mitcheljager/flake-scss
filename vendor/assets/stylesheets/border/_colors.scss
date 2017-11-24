@@ -1,63 +1,63 @@
-@import "../flake/colors-list";
-
 $border-color-hover: true !default;
 $border-color-responsive: false !default;
 
-@if $theme-colors != () {
-  @each $color, $value in $theme-colors {
-    $hover: "";
-
-    @if $border-color-hover {
-      $hover: ", .hover\\:b-#{"" + $color}:hover";
-    }
-
-    .b-#{"" + $color}
-    #{$hover} {
-      border-color: #{$value};
-    }
-
-    $addme: add-to-apply-map(b-#{"" + $color}, "border-color", "#{$value}");
-  }
-}
-
-@if $full-colors {
-  @each $color in $colors {
-    $medium: map-get($colors-list, $color);
-
-    @each $shade, $value in $medium {
+@if index($components, border-colors) {
+  @if $theme-colors != () {
+    @each $color, $value in $theme-colors {
       $hover: "";
 
       @if $border-color-hover {
-        $hover: ", .hover\\:b-#{"" + $color}-#{"" + $shade}:hover";
+        $hover: ", .hover\\:b-#{"" + $color}:hover";
       }
 
-      .b-#{"" + $color}-#{"" + $shade}
+      .b-#{"" + $color}
       #{$hover} {
-        border-color: $value;
+        border-color: #{$value};
       }
 
-      $addme: add-to-apply-map(b-#{"" + $color}-#{"" + $shade}, "border-color", "#{$value}");
+      $addme: add-to-apply-map(b-#{"" + $color}, "border-color", "#{$value}");
     }
   }
-}
+
+  @if $full-colors {
+    @each $color in $colors {
+      $medium: map-get($colors-list, $color);
+
+      @each $shade, $value in $medium {
+        $hover: "";
+
+        @if $border-color-hover {
+          $hover: ", .hover\\:b-#{"" + $color}-#{"" + $shade}:hover";
+        }
+
+        .b-#{"" + $color}-#{"" + $shade}
+        #{$hover} {
+          border-color: $value;
+        }
+
+        $addme: add-to-apply-map(b-#{"" + $color}-#{"" + $shade}, "border-color", "#{$value}");
+      }
+    }
+  }
 
 
-@if $border-color-responsive {
-  @each $breakpoint, $breakpoint-value in $breakpoints {
-    @include breakpoint($breakpoint) {
-      @if $theme-colors != () {
-        @each $color, $value in $theme-colors {
-          .#{$breakpoint}\:b-#{"" + $color} {
-            border-color: #{$value};
+  @if $border-color-responsive {
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include breakpoint($breakpoint) {
+        @if $theme-colors != () {
+          @each $color, $value in $theme-colors {
+            .#{$breakpoint}\:b-#{"" + $color} {
+              border-color: #{$value};
+            }
           }
         }
-      }
 
-      @if $full-colors {
-        @each $color in $colors {
-          @each $shade, $value in $medium {
-            .#{$breakpoint}\:bg-#{"" + $color}-#{"" + $shade} {
-              border-color: $value;
+        @if $full-colors {
+          @each $color in $colors {
+            @each $shade, $value in $medium {
+              .#{$breakpoint}\:bg-#{"" + $color}-#{"" + $shade} {
+                border-color: $value;
+              }
             }
           }
         }

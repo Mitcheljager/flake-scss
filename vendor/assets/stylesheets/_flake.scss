@@ -1,6 +1,7 @@
 @import "variables";
 
-@import "flake/functions",
+@import "flake/colors-list",
+        "flake/functions",
         "flake/breakpoints",
         "flake/mixins";
 

@@ -7,10 +7,12 @@ $font-sizes: () !default;
   );
 }
 
-@each $size, $value in $font-sizes {
-  .text-#{$size} {
-    font-size: $value;
-  }
+@if index($components, font-sizes) {
+  @each $size, $value in $font-sizes {
+    .text-#{$size} {
+      font-size: $value;
+    }
 
-  $addme: add-to-apply-map(text-#{$size}, "font-size", "#{$value}");
+    $addme: add-to-apply-map(text-#{$size}, "font-size", "#{$value}");
+  }
 }
