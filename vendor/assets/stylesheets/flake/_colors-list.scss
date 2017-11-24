@@ -4,6 +4,14 @@
 $theme-colors: () !default;
 $full-colors: true !default;
 
+@if $theme-colors != () {
+  :root {
+    @each $color, $value in $theme-colors {
+      --#{$color}: #{$value};
+    }
+  }
+}
+
 $colors: (
   red,
   pink,
@@ -305,4 +313,4 @@ $colors-list: (
     black: #000000,
     white: #FFFFFF
   ),
-);
+) !default;
