@@ -3,7 +3,7 @@ $transitions-responsive: false !default;
 $transitions: (
   none: "none",
   "": ".15s",
-  "slow": ".5s"
+  slow: ".5s"
 ) !default;
 
 @each $transition, $value in $transitions {

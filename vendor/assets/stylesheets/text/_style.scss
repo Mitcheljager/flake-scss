@@ -5,7 +5,7 @@ $decoration: (
   none
 ) !default;
 
-@if index($components, font-style) {
+@if index($components, text-decoration) {
   @each $value in $decoration {
     .text-#{$value} {
       text-decoration: $value;
@@ -15,14 +15,14 @@ $decoration: (
   }
 }
 
-$style: (
+$font-style: (
   normal,
   italic,
   oblique
 ) !default;
 
 @if index($components, font-style) {
-  @each $value in $style {
+  @each $value in $font-style {
     .font-#{$value} {
       font-style: $value;
     }
@@ -38,7 +38,7 @@ bold,
 bolder
 ) !default;
 
-@if index($components, font-style) {
+@if index($components, font-weights) {
   @each $value in $font-weights {
     .font-#{$value} {
       font-weight: $value;
@@ -48,15 +48,15 @@ bolder
   }
 }
 
-$transform: (
-lowercase,
-uppercase,
-capitalize
+$text-transform: (
+  lowercase,
+  uppercase,
+  capitalize
 ) !default;
 
-@if index($components, font-style) {
+@if index($components, text-transform) {
 
-  @each $value in $transform {
+  @each $value in $text-transform {
     .text-#{$value} {
       text-transform: $value;
     }
