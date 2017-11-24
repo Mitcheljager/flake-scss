@@ -1,15 +1,12 @@
 $flex-responsive: true !default;
 
-$flex: () !default;
-@if $flex == () {
-  $flex: (
-    flex-direction,
-    flex-wrap,
-    align-items,
-    align-self,
-    justify-content
-  );
-}
+$flex: (
+  flex-direction,
+  flex-wrap,
+  align-items,
+  align-self,
+  justify-content
+) !default;
 
 $flex-list: (
   "flex-direction": (

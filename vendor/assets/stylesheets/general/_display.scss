@@ -1,15 +1,12 @@
 $display-responsive: true !default;
 
-$display: () !default;
-@if $display == () {
-  $display: (
-    inline,
-    inline-block,
-    block,
-    flex,
-    inline-flex
-  );
-}
+$display: (
+  inline,
+  inline-block,
+  block,
+  flex,
+  inline-flex
+) !default;
 
 @if index($components, display) {
   @each $property in $display {

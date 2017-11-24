@@ -4,7 +4,7 @@ $align: (
   left,
   center,
   right
-);
+) !default;
 
 @if index($components, text-align) {
   @each $value in $align {

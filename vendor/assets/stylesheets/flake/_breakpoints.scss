@@ -1,9 +1,6 @@
-$breakpoints: () !default;
-@if $breakpoints == () {
-  $breakpoints: (
-    sm: 560px,
-    md: 768px,
-    lg: 960px,
-    mw: 1200px
-  );
-}
+$breakpoints: (
+  sm: 560px,
+  md: 768px,
+  lg: 960px,
+  mw: 1200px
+) !default;

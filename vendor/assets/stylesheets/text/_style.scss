@@ -1,11 +1,11 @@
-@if index($components, font-style) {
-  $decoration: (
-    overline,
-    line-through,
-    underline,
-    none
-  );
+$decoration: (
+  overline,
+  line-through,
+  underline,
+  none
+) !default;
 
+@if index($components, font-style) {
   @each $value in $decoration {
     .text-#{$value} {
       text-decoration: $value;
@@ -15,13 +15,13 @@
   }
 }
 
-@if index($components, font-style) {
-  $style: (
-    normal,
-    italic,
-    oblique
-  );
+$style: (
+  normal,
+  italic,
+  oblique
+) !default;
 
+@if index($components, font-style) {
   @each $value in $style {
     .font-#{$value} {
       font-style: $value;
@@ -31,17 +31,14 @@
   }
 }
 
-@if index($components, font-style) {
-  $font-weights: () !default;
-  @if $font-weights == () {
-    $font-weights: (
-      lighter,
-      normal,
-      bold,
-      bolder
-    );
-  }
+$font-weights: (
+lighter,
+normal,
+bold,
+bolder
+) !default;
 
+@if index($components, font-style) {
   @each $value in $font-weights {
     .font-#{$value} {
       font-weight: $value;
@@ -51,12 +48,13 @@
   }
 }
 
+$transform: (
+lowercase,
+uppercase,
+capitalize
+) !default;
+
 @if index($components, font-style) {
-  $transform: (
-    lowercase,
-    uppercase,
-    capitalize
-  );
 
   @each $value in $transform {
     .text-#{$value} {

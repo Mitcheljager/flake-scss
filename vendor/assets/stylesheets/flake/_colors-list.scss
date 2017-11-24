@@ -4,31 +4,28 @@
 $theme-colors: () !default;
 $full-colors: true !default;
 
-$colors: () !default;
-@if $colors == () {
-  $colors: (
-    red,
-    pink,
-    purple,
-    deep-purple,
-    indigo,
-    blue,
-    light-blue,
-    cyan,
-    teal,
-    green,
-    light-green,
-    lime,
-    yellow,
-    amber,
-    orange,
-    deep-orange,
-    brown,
-    gray,
-    blue-gray,
-    general
-  );
-}
+$colors: (
+  red,
+  pink,
+  purple,
+  deep-purple,
+  indigo,
+  blue,
+  light-blue,
+  cyan,
+  teal,
+  green,
+  light-green,
+  lime,
+  yellow,
+  amber,
+  orange,
+  deep-orange,
+  brown,
+  gray,
+  blue-gray,
+  general
+) !default;
 
 $colors-list: (
   red: (

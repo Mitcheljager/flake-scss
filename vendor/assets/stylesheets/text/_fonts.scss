@@ -52,14 +52,11 @@ $monospace: "Palatino Linotype",
             Georgia,
             serif !default;
 
-$font-families: () !default;
-@if $font-families == () {
-  $font-families: (
-    serif: $serif,
-    sans-serif: $sans-serif,
-    monospace: $monospace
-  );
-}
+$font-families: (
+  serif: $serif,
+  sans-serif: $sans-serif,
+  monospace: $monospace
+) !default;
 
 @if index($components, fonts) {
   @each $font-family, $value in $font-families {

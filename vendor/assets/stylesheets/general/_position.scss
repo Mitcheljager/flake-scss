@@ -1,15 +1,12 @@
 $positions-responsive: true !default;
 
-$positions: () !default;
-@if $positions == () {
-  $positions: (
-    fixed,
-    relative,
-    absolute,
-    static,
-    sticky
-  );
-}
+$positions: (
+  fixed,
+  relative,
+  absolute,
+  static,
+  sticky
+) !default;
 
 @if index($components, position) {
   @each $position in $positions {
@@ -33,19 +30,16 @@ $positions: () !default;
   }
 }
 
+$pins-responsive: true !default;
+
+$pins: (
+  t: "top",
+  r: "right",
+  b: "bottom",
+  l: "left"
+) !default;
+
 @if index($components, position) {
-  $pins-responsive: true !default;
-
-  $pins: () !default;
-  @if $pins == () {
-    $pins: (
-      t: "top",
-      r: "right",
-      b: "bottom",
-      l: "left"
-    );
-  }
-
   @each $pin, $value in $pins {
     .pin-#{$pin} {
       #{$value}: 0;

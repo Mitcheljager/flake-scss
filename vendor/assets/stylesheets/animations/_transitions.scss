@@ -1,13 +1,10 @@
 $transitions-responsive: false !default;
 
-$transitions: () !default;
-@if $transitions == () {
-  $transitions: (
-    none: "none",
-    "": ".15s",
-    "slow": ".5s"
-  );
-}
+$transitions: (
+  none: "none",
+  "": ".15s",
+  "slow": ".5s"
+) !default;
 
 @each $transition, $value in $transitions {
   $sep: "";

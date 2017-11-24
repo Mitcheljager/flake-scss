@@ -2,27 +2,21 @@ $border-hover: true !default;
 $border-responsive: true !default;
 $border-default-color: black;
 
-$borders: () !default;
-@if $borders == () {
-  $borders: (
-    "": "",
-    t: "top",
-    r: "right",
-    b: "bottom",
-    l: "left"
-  );
-}
+$borders: (
+  "": "",
+  t: "top",
+  r: "right",
+  b: "bottom",
+  l: "left"
+) !default;
 
-$border-sizes: () !default;
-@if $border-sizes == () {
-  $border-sizes: (
-    1,
-    2,
-    3,
-    4,
-    5
-  );
-}
+$border-sizes: (
+  1,
+  2,
+  3,
+  4,
+  5
+) !default;
 
 @mixin makeBorder($space, $value, $size, $breakpoint: 0) {
   $bp: "";

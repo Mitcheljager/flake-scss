@@ -1,17 +1,14 @@
 $spacing-responsive: true !default;
 
-$spacing: () !default;
-@if $spacing == () {
-  $spacing: (
-    0: 0,
-    1: .25rem,
-    2: .5rem,
-    3: 1rem,
-    4: 2rem,
-    5: 4rem,
-    auto: auto
-  );
-}
+$spacing: (
+  0: 0,
+  1: .25rem,
+  2: .5rem,
+  3: 1rem,
+  4: 2rem,
+  5: 4rem,
+  auto: auto
+) !default;
 
 $spacing-locations: (
   t: "top",
@@ -25,7 +22,7 @@ $spacing-locations: (
     left: "left",
     right: "right"
   )
-);
+) !default;
 
 $types: (
   m: margin,
