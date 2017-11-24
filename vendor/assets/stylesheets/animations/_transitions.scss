@@ -1,0 +1,40 @@
+$transitions-responsive: false !default;
+
+$transitions: () !default;
+@if $transitions == () {
+  $transitions: (
+    none: "none",
+    "": ".15s",
+    "slow": ".5s"
+  );
+}
+
+@each $transition, $value in $transitions {
+  $sep: "";
+  @if $transition != "" {
+    $sep: "-"
+  }
+
+  .transition#{$sep}#{$transition} {
+    transition: #{$value};
+  }
+
+  $addme: add-to-apply-map(transition-#{$transition}, "transition", "#{$value}");
+}
+
+@if $transitions-responsive {
+  @each $breakpoint, $breakpoint-value in $breakpoints {
+    @include breakpoint($breakpoint) {
+      @each $transition, $value in $transitions {
+        $sep: "";
+        @if $transition != "" {
+          $sep: "-";
+        }
+
+        .#{$breakpoint}\:transition#{$sep}#{$transition} {
+          transition: #{$value};
+        }
+      }
+    }
+  }
+}

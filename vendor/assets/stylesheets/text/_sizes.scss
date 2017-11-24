@@ -1,10 +1,13 @@
-$sizes: (
-  small: .85em,
-  normal: 16px,
-  large: 1.15em
-);
+$font-sizes: () !default;
+@if $font-sizes == () {
+  $font-sizes: (
+    small: .85em,
+    normal: 16px,
+    large: 1.15em
+  );
+}
 
-@each $size, $value in $sizes {
+@each $size, $value in $font-sizes {
   .text-#{$size} {
     font-size: $value;
   }
