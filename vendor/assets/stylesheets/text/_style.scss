@@ -7,11 +7,11 @@ $decoration: (
 
 @if index($components, text-decoration) {
   @each $value in $decoration {
-    .text-#{$value} {
+    .#{map-get($classnames, text)}-#{$value} {
       text-decoration: $value;
     }
 
-    $addme: add-to-apply-map(text-#{$value}, "text-decoration", "#{$value}");
+    $addme: add-to-apply-map(#{map-get($classnames, text)}-#{$value}, "text-decoration", "#{$value}");
   }
 }
 
@@ -23,28 +23,28 @@ $font-style: (
 
 @if index($components, font-style) {
   @each $value in $font-style {
-    .font-#{$value} {
+    .#{map-get($classnames, font)}-#{$value} {
       font-style: $value;
     }
 
-    $addme: add-to-apply-map(font-#{$value}, "font-style", "#{$value}");
+    $addme: add-to-apply-map(#{map-get($classnames, font)}-#{$value}, "font-style", "#{$value}");
   }
 }
 
 $font-weights: (
-lighter,
-normal,
-bold,
-bolder
+  lighter,
+  normal,
+  bold,
+  bolder
 ) !default;
 
 @if index($components, font-weights) {
   @each $value in $font-weights {
-    .font-#{$value} {
+    .#{map-get($classnames, font)}-#{$value} {
       font-weight: $value;
     }
 
-    $addme: add-to-apply-map(font-#{$value}, "font-weight", "#{$value}");
+    $addme: add-to-apply-map(#{map-get($classnames, font)}-#{$value}, "font-weight", "#{$value}");
   }
 }
 
@@ -57,10 +57,10 @@ $text-transform: (
 @if index($components, text-transform) {
 
   @each $value in $text-transform {
-    .text-#{$value} {
+    .#{map-get($classnames, text)}-#{$value} {
       text-transform: $value;
     }
 
-    $addme: add-to-apply-map(text-#{$value}, "text-transform", "#{$value}");
+    $addme: add-to-apply-map(#{map-get($classnames, text)}-#{$value}, "text-transform", "#{$value}");
   }
 }

@@ -8,18 +8,18 @@ $align: (
 
 @if index($components, text-align) {
   @each $value in $align {
-    .text-#{$value} {
+    .#{map-get($classnames, text)}-#{$value} {
       text-align: $value;
     }
 
-    $addme: add-to-apply-map(text-#{$value}, "text", "#{$value}");
+    $addme: add-to-apply-map(#{map-get($classnames, text)}-#{$value}, "text", "#{$value}");
   }
 
   @if $text-align-responsive {
     @each $breakpoint, $breakpoint-value in $breakpoints {
       @include breakpoint($breakpoint) {
         @each $value in $align {
-          .#{$breakpoint}\:text-#{$value} {
+          .#{$breakpoint}\:#{map-get($classnames, text)}-#{$value} {
             text-align: $value;
           }
         }

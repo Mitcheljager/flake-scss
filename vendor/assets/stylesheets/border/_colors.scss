@@ -7,15 +7,15 @@ $border-color-responsive: false !default;
       $hover: "";
 
       @if $border-color-hover {
-        $hover: ", .hover\\:b-#{"" + $color}:hover";
+        $hover: ", .hover\\:#{map-get($classnames, border)}-#{"" + $color}:hover";
       }
 
-      .b-#{"" + $color}
+      .#{map-get($classnames, border)}-#{"" + $color}
       #{$hover} {
         border-color: #{$value};
       }
 
-      $addme: add-to-apply-map(b-#{"" + $color}, "border-color", "#{$value}");
+      $addme: add-to-apply-map(#{map-get($classnames, border)}-#{"" + $color}, "border-color", "#{$value}");
     }
   }
 
@@ -27,15 +27,15 @@ $border-color-responsive: false !default;
         $hover: "";
 
         @if $border-color-hover {
-          $hover: ", .hover\\:b-#{"" + $color}-#{"" + $shade}:hover";
+          $hover: ", .hover\\:#{map-get($classnames, border)}-#{"" + $color}-#{"" + $shade}:hover";
         }
 
-        .b-#{"" + $color}-#{"" + $shade}
+        .#{map-get($classnames, border)}-#{"" + $color}-#{"" + $shade}
         #{$hover} {
           border-color: $value;
         }
 
-        $addme: add-to-apply-map(b-#{"" + $color}-#{"" + $shade}, "border-color", "#{$value}");
+        $addme: add-to-apply-map(#{map-get($classnames, border)}-#{"" + $color}-#{"" + $shade}, "border-color", "#{$value}");
       }
     }
   }
@@ -46,7 +46,7 @@ $border-color-responsive: false !default;
       @include breakpoint($breakpoint) {
         @if $theme-colors != () {
           @each $color, $value in $theme-colors {
-            .#{$breakpoint}\:b-#{"" + $color} {
+            .#{$breakpoint}\:#{map-get($classnames, border)}-#{"" + $color} {
               border-color: #{$value};
             }
           }
@@ -55,7 +55,7 @@ $border-color-responsive: false !default;
         @if $full-colors {
           @each $color in $colors {
             @each $shade, $value in $medium {
-              .#{$breakpoint}\:bg-#{"" + $color}-#{"" + $shade} {
+              .#{$breakpoint}\:#{map-get($classnames, border)}-#{"" + $color}-#{"" + $shade} {
                 border-color: $value;
               }
             }

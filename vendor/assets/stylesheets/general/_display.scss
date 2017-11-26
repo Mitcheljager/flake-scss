@@ -17,6 +17,10 @@ $display: (
     $addme: add-to-apply-map(#{$property}, "display", "#{$property}");
   }
 
+  .hidden {
+    display: none;
+  }
+
   @if $display-responsive {
     @each $breakpoint, $breakpoint-value in $breakpoints {
       @include breakpoint($breakpoint) {
@@ -27,10 +31,6 @@ $display: (
         }
       }
     }
-  }
-
-  .hidden {
-    display: none;
   }
 
   @if $display-responsive {

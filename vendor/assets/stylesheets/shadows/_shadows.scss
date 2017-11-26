@@ -15,22 +15,22 @@ $shadows: (
     $hover: "";
 
     @if $shadows-hover {
-      $hover: ", .hover\\:shadow-#{$shadow}:hover";
+      $hover: ", .hover\\:#{map-get($classnames, shadow)}-#{$shadow}:hover";
     }
 
-    .shadow-#{$shadow}
+    .#{map-get($classnames, shadow)}-#{$shadow}
     #{$hover} {
       box-shadow: #{$value};
     }
 
-    $addme: add-to-apply-map(shadow-#{$shadow}, "box-shadow", "#{$value}");
+    $addme: add-to-apply-map(#{map-get($classnames, shadow)}-#{$shadow}, "box-shadow", "#{$value}");
   }
 
   @if $shadows-responsive {
     @each $breakpoint, $breakpoint-value in $breakpoints {
       @include breakpoint($breakpoint) {
         @each $shadow, $value in $shadows {
-          .#{$breakpoint}\:shadow-#{$shadow} {
+          .#{$breakpoint}\:#{map-get($classnames, shadow)}-#{$shadow} {
             box-shadow: #{$value};
           }
         }

@@ -6,15 +6,15 @@ $text-colors-hover: true !default;
       $hover: "";
 
       @if $text-colors-hover {
-        $hover: ", .hover\\:text-#{"" + $color}:hover";
+        $hover: ", .hover\\:#{map-get($classnames, text)}-#{"" + $color}:hover";
       }
 
-      .text-#{"" + $color}
+      .#{map-get($classnames, text)}-#{"" + $color}
       #{$hover} {
         color: #{$value};
       }
 
-      $addme: add-to-apply-map(text-#{"" + $color}, "color", "#{$value}");
+      $addme: add-to-apply-map(#{map-get($classnames, text)}-#{"" + $color}, "color", "#{$value}");
     }
   }
 
@@ -26,15 +26,15 @@ $text-colors-hover: true !default;
         $hover: "";
 
         @if $text-colors-hover {
-          $hover: ", .hover\\:text-#{"" + $color}-#{"" + $shade}:hover";
+          $hover: ", .hover\\:#{map-get($classnames, text)}-#{"" + $color}-#{"" + $shade}:hover";
         }
 
-        .text-#{"" + $color}-#{"" + $shade}
+        .#{map-get($classnames, text)}-#{"" + $color}-#{"" + $shade}
         #{$hover} {
           color: $value;
         }
 
-        $addme: add-to-apply-map(text-#{"" + $color}-#{"" + $shade}, "color", "#{$value}");
+        $addme: add-to-apply-map(#{map-get($classnames, text)}-#{"" + $color}-#{"" + $shade}, "color", "#{$value}");
       }
     }
   }

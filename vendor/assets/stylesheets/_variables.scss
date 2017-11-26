@@ -21,3 +21,20 @@ $components: (
   font-weights,
   text-decoration
 ) !default;
+
+$classnames: (
+  position: "",
+  display: "",
+  width: "w",
+  padding: "p",
+  margin: "m",
+  border: "b",
+  border-radius: "radius",
+  flex: "",
+  background: "bg",
+  text: "text",
+  font: "font",
+  transition: "transition",
+  shadow: "shadow",
+  z-index: "z"
+) !default;

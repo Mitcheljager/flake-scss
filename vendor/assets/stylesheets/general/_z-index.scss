@@ -10,10 +10,10 @@ $z-index: (
 
 @if index($components, z-index) {
   @each $value in $z-index {
-    .z-#{$value} {
+    .#{map-get($classnames, z-index)}-#{$value} {
       z-index: $value;
     }
 
-    $addme: add-to-apply-map(z-#{$value}, "z-index", "#{$value}");
+    $addme: add-to-apply-map(#{map-get($classnames, z-index)}-#{$value}, "z-index", "#{$value}");
   }
 }

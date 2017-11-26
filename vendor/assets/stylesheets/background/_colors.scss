@@ -10,12 +10,12 @@ $bg-responsive: true !default;
         $hover: ", .hover\\:bg-#{"" + $color}:hover";
       }
 
-      .bg-#{"" + $color}
+      .#{map-get($classnames, background)}-#{"" + $color}
       #{$hover} {
         background-color: #{$value};
       }
 
-      $addme: add-to-apply-map(bg-#{"" + $color}, "background-color", "#{$value}");
+      $addme: add-to-apply-map(#{map-get($classnames, background)}-#{"" + $color}, "background-color", "#{$value}");
     }
   }
 
@@ -27,15 +27,15 @@ $bg-responsive: true !default;
         $hover: "";
 
         @if $bg-hover {
-          $hover: ", .hover\\:bg-#{"" + $color}-#{"" + $shade}:hover";
+          $hover: ", .hover\\:#{map-get($classnames, background)}-#{"" + $color}-#{"" + $shade}:hover";
         }
 
-        .bg-#{"" + $color}-#{"" + $shade}
+        .#{map-get($classnames, background)}-#{"" + $color}-#{"" + $shade}
         #{$hover} {
           background-color: $value;
         }
 
-        $addme: add-to-apply-map(bg-#{"" + $color}-#{"" + $shade}, "background-color", "#{$value}");
+        $addme: add-to-apply-map(#{map-get($classnames, background)}-#{"" + $color}-#{"" + $shade}, "background-color", "#{$value}");
       }
     }
   }
@@ -45,7 +45,7 @@ $bg-responsive: true !default;
       @include breakpoint($breakpoint) {
         @if $theme-colors != () {
           @each $color, $value in $theme-colors {
-            .#{$breakpoint}\:bg-#{"" + $color} {
+            .#{$breakpoint}\:#{map-get($classnames, background)}-#{"" + $color} {
               background-color: #{$value};
             }
           }
@@ -56,7 +56,7 @@ $bg-responsive: true !default;
             $medium: map-get($colors-list, $color);
 
             @each $shade, $value in $medium {
-              .#{$breakpoint}\:bg-#{"" + $color}-#{"" + $shade} {
+              .#{$breakpoint}\:#{map-get($classnames, background)}-#{"" + $color}-#{"" + $shade} {
                 background-color: $value;
               }
             }

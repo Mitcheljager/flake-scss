@@ -4,12 +4,12 @@
     $bp: "#{$breakpoint}\\:";
   }
 
-  .#{$bp}w-#{$division}\/#{$divide} {
+  .#{$bp}#{map-get($classnames, width)}-#{$division}\/#{$divide} {
     width: (100% / $divide) * $division;
   }
 
   @if $breakpoint == 0 {
-    $addme: add-to-apply-map("#{$bp}w-#{$division}/#{$divide}", "width", "#{(100% / $divide) * $division}");
+    $addme: add-to-apply-map("#{$bp}#{map-get($classnames, width)}-#{$division}/#{$divide}", "width", "#{(100% / $divide) * $division}");
   }
 }
 
@@ -21,11 +21,11 @@ $grid-single: false !default;
   // No Breakpoints
   @if $grid-single {
     @for $i from 1 through $grid-size {
-      .w-#{$i} {
+      .#{map-get($classnames, width)}-#{$i} {
         width: (100% / $grid-size) * $i;
       }
 
-      $addme: add-to-apply-map("w-#{$i}", "width", "#{(100% / $grid-size) * $i}");
+      $addme: add-to-apply-map("#{map-get($classnames, width)}-#{$i}", "width", "#{(100% / $grid-size) * $i}");
     }
   } @else {
     @for $i from 1 through $grid-size {
@@ -44,7 +44,7 @@ $grid-single: false !default;
     @each $breakpoint, $breakpoint-value in $breakpoints {
       @include breakpoint($breakpoint) {
         @for $i from 1 through $grid-size {
-          .#{$breakpoint}\:w-#{$i} {
+          .#{$breakpoint}\:#{map-get($classnames, width)}-#{$i} {
             width: (100% / $grid-size) * $i;
           }
         }
@@ -67,7 +67,7 @@ $grid-single: false !default;
   }
 
   @if map-get($breakpoints, mw) {
-    .w-max {
+    .#{map-get($classnames, width)}-max {
       max-width: map-get($breakpoints, mw);
     }
   }

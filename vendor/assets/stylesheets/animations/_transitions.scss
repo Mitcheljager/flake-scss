@@ -12,11 +12,11 @@ $transitions: (
     $sep: "-"
   }
 
-  .transition#{$sep}#{$transition} {
+  .#{map-get($classnames, transition)}#{$sep}#{$transition} {
     transition: #{$value};
   }
 
-  $addme: add-to-apply-map(transition-#{$transition}, "transition", "#{$value}");
+  $addme: add-to-apply-map(#{map-get($classnames, transition)}#{$sep}#{$transition}, "transition", "#{$value}");
 }
 
 @if $transitions-responsive {
@@ -28,7 +28,7 @@ $transitions: (
           $sep: "-";
         }
 
-        .#{$breakpoint}\:transition#{$sep}#{$transition} {
+        .#{$breakpoint}\:#{map-get($classnames, transition)}#{$sep}#{$transition} {
           transition: #{$value};
         }
       }

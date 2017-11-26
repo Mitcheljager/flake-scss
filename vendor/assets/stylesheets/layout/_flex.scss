@@ -62,7 +62,7 @@ $flex-list: (
 
     @each $name, $value in $medium {
       @if $name == "class" {
-        $classstart: #{$value};
+        $classstart: #{map-get($classnames, flex)}#{$value};
       }
 
       @if $name == "values" {

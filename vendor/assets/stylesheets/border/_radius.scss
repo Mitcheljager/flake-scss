@@ -14,18 +14,18 @@ $radius: (
 
 @if index($components, border-radius) {
   @each $radi, $value in $radius {
-    .radius-#{$radi} {
+    .#{map-get($classnames, border-radius)}-#{$radi} {
       border-radius: $value;
     }
 
-    $addme: add-to-apply-map(radius-#{$radi}, "border-radius", "#{$value}");
+    $addme: add-to-apply-map(#{map-get($classnames, border-radius)}-#{$radi}, "border-radius", "#{$value}");
   }
 
   @if $radius-responsive {
     @each $breakpoint, $breakpoint-value in $breakpoints {
       @include breakpoint($breakpoint) {
         @each $radi, $value in $radius {
-          .#{$breakpoint}\:radius-#{$radi} {
+          .#{$breakpoint}\:#{map-get($classnames, border-radius)}-#{$radi} {
             border-radius: $value;
           }
         }

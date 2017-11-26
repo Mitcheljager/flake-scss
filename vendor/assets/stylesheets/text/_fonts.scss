@@ -60,10 +60,10 @@ $font-families: (
 
 @if index($components, fonts) {
   @each $font-family, $value in $font-families {
-    .font-#{$font-family} {
+    .#{map-get($classnames, font)}-#{$font-family} {
       font-family: $value;
     }
 
-    $addme: add-to-apply-map(font-#{$font-family}, "font-family", "#{$value}");
+    $addme: add-to-apply-map(#{map-get($classnames, font)}-#{$font-family}, "font-family", "#{$value}");
   }
 }
