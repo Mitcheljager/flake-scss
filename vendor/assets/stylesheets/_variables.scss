@@ -22,7 +22,9 @@ $components: (
   text-decoration
 ) !default;
 
-$classnames: (
+$classnames: () !default;
+
+$classnames-default: (
   position: "",
   display: "",
   width: "w",
@@ -38,3 +40,9 @@ $classnames: (
   shadow: "shadow",
   z-index: "z"
 ) !default;
+
+@each $type, $classname in $classnames-default {
+  @if not(map-has-key($classnames, $type)) {
+    $classnames: map-merge($classnames, ($type: $classname));
+  }
+}

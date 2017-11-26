@@ -2,12 +2,6 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  @include apply(("m-0", "p-0", "bg-general-white", "text-size-normal"));
-  line-height: 1.5em;
-}
-
 .overflow-hidden {
   overflow: hidden;
 }
