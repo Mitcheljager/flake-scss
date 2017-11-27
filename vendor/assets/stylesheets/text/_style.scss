@@ -55,7 +55,6 @@ $text-transform: (
 ) !default;
 
 @if index($components, text-transform) {
-
   @each $value in $text-transform {
     .#{map-get($classnames, text)}-#{$value} {
       text-transform: $value;
