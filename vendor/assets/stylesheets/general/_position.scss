@@ -9,51 +9,53 @@ $positions: (
 ) !default;
 
 @if index($components, position) {
-  @each $position in $positions {
-    .#{$position} {
-      position: $position;
+  :root {
+    @each $position in $positions {
+      .#{$position} {
+        position: $position;
+      }
+
+      $addme: add-to-apply-map(#{$position}, "position", "#{$position}");
     }
 
-    $addme: add-to-apply-map(#{$position}, "position", "#{$position}");
-  }
-
-  @if $positions-responsive {
-    @each $breakpoint, $breakpoint-value in $breakpoints {
-      @include breakpoint($breakpoint) {
-        @each $position in $positions {
-          .#{$breakpoint}\:#{$position} {
-            position: $position;
+    @if $positions-responsive {
+      @each $breakpoint, $breakpoint-value in $breakpoints {
+        @include breakpoint($breakpoint) {
+          @each $position in $positions {
+            .#{$breakpoint}\:#{$position} {
+              position: $position;
+            }
           }
         }
       }
     }
   }
-}
 
-$pins-responsive: true !default;
+  $pins-responsive: true !default;
 
-$pins: (
-  t: "top",
-  r: "right",
-  b: "bottom",
-  l: "left"
-) !default;
+  $pins: (
+    t: "top",
+    r: "right",
+    b: "bottom",
+    l: "left"
+  ) !default;
 
-@if index($components, position) {
-  @each $pin, $value in $pins {
-    .pin-#{$pin} {
-      #{$value}: 0;
+  @if index($components, position) {
+    @each $pin, $value in $pins {
+      .pin-#{$pin} {
+        #{$value}: 0;
+      }
+
+      $addme: add-to-apply-map(pin-#{$pin}, "#{$value}", "0");
     }
 
-    $addme: add-to-apply-map(pin-#{$pin}, "#{$value}", "0");
-  }
-
-  @if $pins-responsive {
-    @each $breakpoint, $breakpoint-value in $breakpoints {
-      @include breakpoint($breakpoint) {
-        @each $pin, $value in $pins {
-          .#{$breakpoint}\:pin-#{$pin} {
-            #{$value}: 0;
+    @if $pins-responsive {
+      @each $breakpoint, $breakpoint-value in $breakpoints {
+        @include breakpoint($breakpoint) {
+          @each $pin, $value in $pins {
+            .#{$breakpoint}\:pin-#{$pin} {
+              #{$value}: 0;
+            }
           }
         }
       }

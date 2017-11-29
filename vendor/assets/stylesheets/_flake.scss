@@ -5,33 +5,31 @@
         "flake/breakpoints",
         "flake/mixins";
 
-:root {
-  @import "background/colors",
-          "background/sizes";
+@import "background/colors",
+        "background/sizes";
 
-  @import "border/general",
-          "border/colors",
-          "border/radius";
+@import "border/general",
+        "border/colors",
+        "border/radius";
 
-  @import "text/colors",
-          "text/fonts",
-          "text/style",
-          "text/align",
-          "text/sizes",
-          "text/titles";
+@import "text/colors",
+        "text/fonts",
+        "text/style",
+        "text/align",
+        "text/sizes",
+        "text/titles";
 
-  @import "sizing/spacing",
-          "sizing/grid";
+@import "sizing/spacing",
+        "sizing/grid";
 
-  @import "layout/flex";
+@import "layout/flex";
 
-  @import "shadows/shadows";
+@import "shadows/shadows";
 
-  @import "general/display",
-          "general/position",
-          "general/general",
-          "general/z-index",
-          "general/overflow";
+@import "general/display",
+        "general/position",
+        "general/general",
+        "general/z-index",
+        "general/overflow";
 
-  @import "animations/transitions";
-}
+@import "animations/transitions";

@@ -6,30 +6,34 @@ $transitions: (
   slow: ".5s"
 ) !default;
 
-@each $transition, $value in $transitions {
-  $sep: "";
-  @if $transition != "" {
-    $sep: "-"
-  }
+@if index($components, transition) {
+  :root {
+    @each $transition, $value in $transitions {
+      $sep: "";
+      @if $transition != "" {
+        $sep: "-"
+      }
 
-  .#{map-get($classnames, transition)}#{$sep}#{$transition} {
-    transition: #{$value};
-  }
+      .#{map-get($classnames, transition)}#{$sep}#{$transition} {
+        transition: #{$value};
+      }
 
-  $addme: add-to-apply-map(#{map-get($classnames, transition)}#{$sep}#{$transition}, "transition", "#{$value}");
-}
+      $addme: add-to-apply-map(#{map-get($classnames, transition)}#{$sep}#{$transition}, "transition", "#{$value}");
+    }
 
-@if $transitions-responsive {
-  @each $breakpoint, $breakpoint-value in $breakpoints {
-    @include breakpoint($breakpoint) {
-      @each $transition, $value in $transitions {
-        $sep: "";
-        @if $transition != "" {
-          $sep: "-";
-        }
+    @if $transitions-responsive {
+      @each $breakpoint, $breakpoint-value in $breakpoints {
+        @include breakpoint($breakpoint) {
+          @each $transition, $value in $transitions {
+            $sep: "";
+            @if $transition != "" {
+              $sep: "-";
+            }
 
-        .#{$breakpoint}\:#{map-get($classnames, transition)}#{$sep}#{$transition} {
-          transition: #{$value};
+            .#{$breakpoint}\:#{map-get($classnames, transition)}#{$sep}#{$transition} {
+              transition: #{$value};
+            }
+          }
         }
       }
     }

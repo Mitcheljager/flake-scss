@@ -18,65 +18,67 @@ $grid-full: true !default;
 $grid-single: false !default;
 
 @if index($components, grid) {
-  // No Breakpoints
-  @if $grid-single {
-    @for $i from 1 through $grid-size {
-      .#{map-get($classnames, width)}-#{$i} {
-        width: (100% / $grid-size) * $i;
-      }
-
-      $addme: add-to-apply-map("#{map-get($classnames, width)}-#{$i}", "width", "#{(100% / $grid-size) * $i}");
-    }
-  } @else {
-    @for $i from 1 through $grid-size {
-      @if $grid-full {
-        @for $j from 1 through $i {
-          @include widthify($i, $j);
+  :root {
+    // No Breakpoints
+    @if $grid-single {
+      @for $i from 1 through $grid-size {
+        .#{map-get($classnames, width)}-#{$i} {
+          width: (100% / $grid-size) * $i;
         }
-      } @else {
-        @include widthify($i, 1);
-      }
-    }
-  }
 
-  // Breakpoints
-  @if $grid-single {
-    @each $breakpoint, $breakpoint-value in $breakpoints {
-      @include breakpoint($breakpoint) {
-        @for $i from 1 through $grid-size {
-          .#{$breakpoint}\:#{map-get($classnames, width)}-#{$i} {
-            width: (100% / $grid-size) * $i;
+        $addme: add-to-apply-map("#{map-get($classnames, width)}-#{$i}", "width", "#{(100% / $grid-size) * $i}");
+      }
+    } @else {
+      @for $i from 1 through $grid-size {
+        @if $grid-full {
+          @for $j from 1 through $i {
+            @include widthify($i, $j);
           }
+        } @else {
+          @include widthify($i, 1);
         }
       }
     }
-  } @else {
-    @each $breakpoint, $breakpoint-value in $breakpoints {
-      @include breakpoint($breakpoint) {
-        @for $i from 1 through $grid-size {
-          @if $grid-full {
-            @for $j from 1 through $i {
-              @include widthify($i, $j, $breakpoint);
+
+    // Breakpoints
+    @if $grid-single {
+      @each $breakpoint, $breakpoint-value in $breakpoints {
+        @include breakpoint($breakpoint) {
+          @for $i from 1 through $grid-size {
+            .#{$breakpoint}\:#{map-get($classnames, width)}-#{$i} {
+              width: (100% / $grid-size) * $i;
             }
-          } @else {
-            @include widthify($i, 1, $breakpoint);
+          }
+        }
+      }
+    } @else {
+      @each $breakpoint, $breakpoint-value in $breakpoints {
+        @include breakpoint($breakpoint) {
+          @for $i from 1 through $grid-size {
+            @if $grid-full {
+              @for $j from 1 through $i {
+                @include widthify($i, $j, $breakpoint);
+              }
+            } @else {
+              @include widthify($i, 1, $breakpoint);
+            }
           }
         }
       }
     }
-  }
 
-  @if map-get($breakpoints, mw) {
-    .#{map-get($classnames, width)}-max {
-      max-width: map-get($breakpoints, mw);
+    @if map-get($breakpoints, mw) {
+      .#{map-get($classnames, width)}-max {
+        max-width: map-get($breakpoints, mw);
+      }
     }
-  }
 
-  .h-1\/1 {
-    height: 100%;
-  }
+    .h-1\/1 {
+      height: 100%;
+    }
 
-  .h-auto {
-    height: auto;
+    .h-auto {
+      height: auto;
+    }
   }
 }

@@ -3,11 +3,13 @@ $background-positions: (
 ) !default;
 
 @if index($components, background-positions) {
-  @each $value in $background-positions {
-    .#{map-get($classnames, background)}-#{$value} {
-      background-position: $value;
-    }
+  :root {
+    @each $value in $background-positions {
+      .#{map-get($classnames, background)}-#{$value} {
+        background-position: $value;
+      }
 
-    $addme: add-to-apply-map(#{map-get($classnames, background)}-#{$value}, "background-position", "#{$value}");
+      $addme: add-to-apply-map(#{map-get($classnames, background)}-#{$value}, "background-position", "#{$value}");
+    }
   }
 }

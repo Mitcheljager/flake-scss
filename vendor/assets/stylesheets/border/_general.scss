@@ -45,18 +45,20 @@ $border-sizes: (
 }
 
 @if index($components, borders) {
-  @each $border, $value in $borders {
-    @each $size in $border-sizes {
-      @include makeBorder($border, $value, $size);
+  :root {
+    @each $border, $value in $borders {
+      @each $size in $border-sizes {
+        @include makeBorder($border, $value, $size);
+      }
     }
-  }
 
-  @if $border-responsive {
-    @each $breakpoint, $breakpoint-value in $breakpoints {
-      @include breakpoint($breakpoint) {
-        @each $border, $value in $borders {
-          @each $size in $border-sizes {
-            @include makeBorder($border, $value, $size, $breakpoint);
+    @if $border-responsive {
+      @each $breakpoint, $breakpoint-value in $breakpoints {
+        @include breakpoint($breakpoint) {
+          @each $border, $value in $borders {
+            @each $size in $border-sizes {
+              @include makeBorder($border, $value, $size, $breakpoint);
+            }
           }
         }
       }
