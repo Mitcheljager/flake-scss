@@ -11,11 +11,11 @@ $overflow: (
 
 @if index($components, overflow) {
   @each $property in $overflow {
-    .overflow-#{$property} {
+    .#{map-get($classnames, overflow)}-#{$property} {
       overflow: $property;
     }
 
-    $addme: add-to-apply-map(#{$property}, "overflow", "#{$property}");
+    $addme: add-to-apply-map(#{map-get($classnames, overflow)}-#{$property}, "overflow", "#{$property}");
   }
 
   @if $overflow-responsive {
