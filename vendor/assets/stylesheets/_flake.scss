@@ -6,7 +6,8 @@
         "flake/mixins";
 
 :root {
-  @import "background/colors";
+  @import "background/colors",
+          "background/sizes";
 
   @import "border/general",
           "border/colors",
@@ -28,7 +29,8 @@
   @import "general/display",
           "general/position",
           "general/general",
-          "general/z-index";
+          "general/z-index",
+          "general/overflow";
 
   @import "animations/transitions";
 }
