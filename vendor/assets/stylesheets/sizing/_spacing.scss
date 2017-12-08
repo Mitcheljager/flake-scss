@@ -55,7 +55,7 @@ $types: (
 
           $map: (#{$type-value}#{$sep}#{$loc-value}: "");
           $properties: map-merge($properties, $map);
-          #{$type-value}#{$sep}#{$loc-value}: $value;
+          #{$type-value}#{$sep}#{$loc-value}: $value #{$important};
         }
 
         @if $bp == "" {

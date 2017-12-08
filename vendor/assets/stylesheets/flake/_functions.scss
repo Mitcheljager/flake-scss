@@ -1,7 +1,3 @@
-@function spacing($key: 0) {
-  @return map-get($spacing, $key);
-}
-
 @function add-to-apply-map($classname, $property, $value) {
   $to-add-to-map: "";
 
