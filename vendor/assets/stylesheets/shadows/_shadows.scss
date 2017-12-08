@@ -11,29 +11,27 @@ $shadows: (
 ) !default;
 
 @if index($components, shadows) {
-  :root {
-    @each $shadow, $value in $shadows {
-      $hover: "";
+  @each $shadow, $value in $shadows {
+    $hover: "";
 
-      @if $shadows-hover {
-        $hover: ", .hover\\:#{map-get($classnames, shadow)}-#{$shadow}:hover";
-      }
-
-      .#{map-get($classnames, shadow)}-#{$shadow}
-      #{$hover} {
-        box-shadow: #{$value};
-      }
-
-      $addme: add-to-apply-map(#{map-get($classnames, shadow)}-#{$shadow}, "box-shadow", "#{$value}");
+    @if $shadows-hover {
+      $hover: ", .hover\\:#{map-get($classnames, shadow)}-#{$shadow}:hover";
     }
 
-    @if $shadows-responsive {
-      @each $breakpoint, $breakpoint-value in $breakpoints {
-        @include breakpoint($breakpoint) {
-          @each $shadow, $value in $shadows {
-            .#{$breakpoint}\:#{map-get($classnames, shadow)}-#{$shadow} {
-              box-shadow: #{$value};
-            }
+    .#{map-get($classnames, shadow)}-#{$shadow}
+    #{$hover} {
+      box-shadow: #{$value} #{$important};
+    }
+
+    $addme: add-to-apply-map(#{map-get($classnames, shadow)}-#{$shadow}, "box-shadow", "#{$value}");
+  }
+
+  @if $shadows-responsive {
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include breakpoint($breakpoint) {
+        @each $shadow, $value in $shadows {
+          .#{$breakpoint}\:#{map-get($classnames, shadow)}-#{$shadow} {
+            box-shadow: #{$value} #{$important};
           }
         }
       }

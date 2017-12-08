@@ -5,13 +5,11 @@ $font-sizes: (
 ) !default;
 
 @if index($components, font-sizes) {
-  :root {
-    @each $size, $value in $font-sizes {
-      .#{map-get($classnames, text)}-#{$size} {
-        font-size: $value;
-      }
-
-      $addme: add-to-apply-map(#{map-get($classnames, text)}-#{$size}, "font-size", "#{$value}");
+  @each $size, $value in $font-sizes {
+    .#{map-get($classnames, text)}-#{$size} {
+      font-size: $value #{$important};
     }
+
+    $addme: add-to-apply-map(#{map-get($classnames, text)}-#{$size}, "font-size", "#{$value}");
   }
 }

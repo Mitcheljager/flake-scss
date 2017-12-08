@@ -9,22 +9,20 @@ $positions: (
 ) !default;
 
 @if index($components, position) {
-  :root {
-    @each $position in $positions {
-      .#{$position} {
-        position: $position;
-      }
-
-      $addme: add-to-apply-map(#{$position}, "position", "#{$position}");
+  @each $position in $positions {
+    .#{$position} {
+      position: $position #{$important};
     }
 
-    @if $positions-responsive {
-      @each $breakpoint, $breakpoint-value in $breakpoints {
-        @include breakpoint($breakpoint) {
-          @each $position in $positions {
-            .#{$breakpoint}\:#{$position} {
-              position: $position;
-            }
+    $addme: add-to-apply-map(#{$position}, "position", "#{$position}");
+  }
+
+  @if $positions-responsive {
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include breakpoint($breakpoint) {
+        @each $position in $positions {
+          .#{$breakpoint}\:#{$position} {
+            position: $position #{$important};
           }
         }
       }
@@ -43,7 +41,7 @@ $positions: (
   @if index($components, position) {
     @each $pin, $value in $pins {
       .pin-#{$pin} {
-        #{$value}: 0;
+        #{$value}: 0 #{$important};
       }
 
       $addme: add-to-apply-map(pin-#{$pin}, "#{$value}", "0");
@@ -54,7 +52,7 @@ $positions: (
         @include breakpoint($breakpoint) {
           @each $pin, $value in $pins {
             .#{$breakpoint}\:pin-#{$pin} {
-              #{$value}: 0;
+              #{$value}: 0 #{$important};
             }
           }
         }

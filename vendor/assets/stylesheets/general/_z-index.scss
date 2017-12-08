@@ -9,13 +9,11 @@ $z-index: (
 ) !default;
 
 @if index($components, z-index) {
-  :root {
-    @each $value in $z-index {
-      .#{map-get($classnames, z-index)}-#{$value} {
-        z-index: $value;
-      }
-
-      $addme: add-to-apply-map(#{map-get($classnames, z-index)}-#{$value}, "z-index", "#{$value}");
+  @each $value in $z-index {
+    .#{map-get($classnames, z-index)}-#{$value} {
+      z-index: $value #{$important};
     }
+
+    $addme: add-to-apply-map(#{map-get($classnames, z-index)}-#{$value}, "z-index", "#{$value}");
   }
 }

@@ -59,13 +59,11 @@ $font-families: (
 );
 
 @if index($components, fonts) {
-  :root {
-    @each $font-family, $value in $font-families {
-      .#{map-get($classnames, font)}-#{$font-family} {
-        font-family: $value;
-      }
-
-      $addme: add-to-apply-map(#{map-get($classnames, font)}-#{$font-family}, "font-family", "#{$value}");
+  @each $font-family, $value in $font-families {
+    .#{map-get($classnames, font)}-#{$font-family} {
+      font-family: $value #{$important};
     }
+
+    $addme: add-to-apply-map(#{map-get($classnames, font)}-#{$font-family}, "font-family", "#{$value}");
   }
 }

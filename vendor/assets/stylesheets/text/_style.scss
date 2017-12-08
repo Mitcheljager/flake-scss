@@ -6,14 +6,12 @@ $decoration: (
 ) !default;
 
 @if index($components, text-decoration) {
-  :root {
-    @each $value in $decoration {
-      .#{map-get($classnames, text)}-#{$value} {
-        text-decoration: $value;
-      }
-
-      $addme: add-to-apply-map(#{map-get($classnames, text)}-#{$value}, "text-decoration", "#{$value}");
+  @each $value in $decoration {
+    .#{map-get($classnames, text)}-#{$value} {
+      text-decoration: $value #{$important};
     }
+
+    $addme: add-to-apply-map(#{map-get($classnames, text)}-#{$value}, "text-decoration", "#{$value}");
   }
 }
 
@@ -24,14 +22,12 @@ $font-style: (
 ) !default;
 
 @if index($components, font-style) {
-  :root {
-    @each $value in $font-style {
-      .#{map-get($classnames, font)}-#{$value} {
-        font-style: $value;
-      }
-
-      $addme: add-to-apply-map(#{map-get($classnames, font)}-#{$value}, "font-style", "#{$value}");
+  @each $value in $font-style {
+    .#{map-get($classnames, font)}-#{$value} {
+      font-style: $value #{$important};
     }
+
+    $addme: add-to-apply-map(#{map-get($classnames, font)}-#{$value}, "font-style", "#{$value}");
   }
 }
 
@@ -43,14 +39,12 @@ $font-weights: (
 ) !default;
 
 @if index($components, font-weights) {
-  :root {
-    @each $value in $font-weights {
-      .#{map-get($classnames, font)}-#{$value} {
-        font-weight: $value;
-      }
-
-      $addme: add-to-apply-map(#{map-get($classnames, font)}-#{$value}, "font-weight", "#{$value}");
+  @each $value in $font-weights {
+    .#{map-get($classnames, font)}-#{$value} {
+      font-weight: $value #{$important};
     }
+
+    $addme: add-to-apply-map(#{map-get($classnames, font)}-#{$value}, "font-weight", "#{$value}");
   }
 }
 
@@ -61,13 +55,11 @@ $text-transform: (
 ) !default;
 
 @if index($components, text-transform) {
-  :root {
-    @each $value in $text-transform {
-      .#{map-get($classnames, text)}-#{$value} {
-        text-transform: $value;
-      }
-
-      $addme: add-to-apply-map(#{map-get($classnames, text)}-#{$value}, "text-transform", "#{$value}");
+  @each $value in $text-transform {
+    .#{map-get($classnames, text)}-#{$value} {
+      text-transform: $value #{$important};
     }
+
+    $addme: add-to-apply-map(#{map-get($classnames, text)}-#{$value}, "text-transform", "#{$value}");
   }
 }

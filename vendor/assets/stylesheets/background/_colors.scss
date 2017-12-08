@@ -12,7 +12,7 @@ $bg-responsive: true !default;
 
       .#{map-get($classnames, background)}-#{"" + $color}
       #{$hover} {
-        background-color: #{$value};
+        background-color: #{$value} #{$important};
       }
 
       $addme: add-to-apply-map(#{map-get($classnames, background)}-#{"" + $color}, "background-color", "#{$value}");
@@ -32,7 +32,7 @@ $bg-responsive: true !default;
 
         .#{map-get($classnames, background)}-#{"" + $color}-#{"" + $shade}
         #{$hover} {
-          background-color: $value;
+          background-color: #{$value} #{$important};
         }
 
         $addme: add-to-apply-map(#{map-get($classnames, background)}-#{"" + $color}-#{"" + $shade}, "background-color", "#{$value}");
@@ -46,7 +46,7 @@ $bg-responsive: true !default;
         @if $theme-colors != () {
           @each $color, $value in $theme-colors {
             .#{$breakpoint}\:#{map-get($classnames, background)}-#{"" + $color} {
-              background-color: #{$value};
+              background-color: #{$value} #{$important};
             }
           }
         }
@@ -57,7 +57,7 @@ $bg-responsive: true !default;
 
             @each $shade, $value in $medium {
               .#{$breakpoint}\:#{map-get($classnames, background)}-#{"" + $color}-#{"" + $shade} {
-                background-color: $value;
+                background-color: $value #{$important};
               }
             }
           }

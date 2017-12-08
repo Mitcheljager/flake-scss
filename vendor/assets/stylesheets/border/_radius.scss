@@ -13,22 +13,20 @@ $radius: (
 ) !default;
 
 @if index($components, border-radius) {
-  :root {
-    @each $radi, $value in $radius {
-      .#{map-get($classnames, border-radius)}-#{$radi} {
-        border-radius: $value;
-      }
-
-      $addme: add-to-apply-map(#{map-get($classnames, border-radius)}-#{$radi}, "border-radius", "#{$value}");
+  @each $radi, $value in $radius {
+    .#{map-get($classnames, border-radius)}-#{$radi} {
+      border-radius: $value #{$important};
     }
 
-    @if $radius-responsive {
-      @each $breakpoint, $breakpoint-value in $breakpoints {
-        @include breakpoint($breakpoint) {
-          @each $radi, $value in $radius {
-            .#{$breakpoint}\:#{map-get($classnames, border-radius)}-#{$radi} {
-              border-radius: $value;
-            }
+    $addme: add-to-apply-map(#{map-get($classnames, border-radius)}-#{$radi}, "border-radius", "#{$value}");
+  }
+
+  @if $radius-responsive {
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include breakpoint($breakpoint) {
+        @each $radi, $value in $radius {
+          .#{$breakpoint}\:#{map-get($classnames, border-radius)}-#{$radi} {
+            border-radius: $value #{$important};
           }
         }
       }

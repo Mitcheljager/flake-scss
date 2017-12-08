@@ -31,11 +31,11 @@ $border-sizes: (
   }
 
   .#{$bp}b#{$space}-#{$size} {
-    border#{$sep}#{$value}: #{$size}px solid black;
+    border#{$sep}#{$value}: #{$size}px solid black #{$important};
   }
 
   .#{$bp}b#{$space}-0 {
-    border#{$sep}#{$value}: 0;
+    border#{$sep}#{$value}: 0 #{$important};
   }
 
   @if $breakpoint == 0 {
@@ -45,20 +45,18 @@ $border-sizes: (
 }
 
 @if index($components, borders) {
-  :root {
-    @each $border, $value in $borders {
-      @each $size in $border-sizes {
-        @include makeBorder($border, $value, $size);
-      }
+  @each $border, $value in $borders {
+    @each $size in $border-sizes {
+      @include makeBorder($border, $value, $size);
     }
+  }
 
-    @if $border-responsive {
-      @each $breakpoint, $breakpoint-value in $breakpoints {
-        @include breakpoint($breakpoint) {
-          @each $border, $value in $borders {
-            @each $size in $border-sizes {
-              @include makeBorder($border, $value, $size, $breakpoint);
-            }
+  @if $border-responsive {
+    @each $breakpoint, $breakpoint-value in $breakpoints {
+      @include breakpoint($breakpoint) {
+        @each $border, $value in $borders {
+          @each $size in $border-sizes {
+            @include makeBorder($border, $value, $size, $breakpoint);
           }
         }
       }

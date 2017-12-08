@@ -51,3 +51,11 @@ $classnames-default: (
     $classnames: map-merge($classnames, ($type: $classname));
   }
 }
+
+$important: true !default;
+
+@if $important == true {
+  $important: "!important" !global;
+} @else {
+  $important: "" !global;
+}
