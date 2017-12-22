@@ -55,7 +55,7 @@ $types: (
 
           $map: (#{$type-value}#{$sep}#{$loc-value}: "");
           $properties: map-merge($properties, $map);
-          #{$type-value}#{$sep}#{$loc-value}: $value #{$important};
+          #{$type-value}#{$sep}#{$loc-value}: #{choose-variable-type($space, $spacing, "space-")} #{$important};
         }
 
         @if $bp == "" {
@@ -67,7 +67,7 @@ $types: (
           $sep: "-";
         }
 
-        #{$type-value}#{$sep}#{$location-value}: $value #{$important};
+        #{$type-value}#{$sep}#{$location-value}: #{choose-variable-type($space, $spacing, "space-")} #{$important};
 
         @if $bp == "" {
           $addme: add-to-apply-map(#{$bp}#{$type}#{$l}#{$s}, "#{$type-value}#{$sep}#{$location-value}", "#{$value}");
@@ -123,6 +123,14 @@ $types: (
           }
         }
       }
+    }
+  }
+}
+
+@if $css-variables {
+  :root {
+    @each $space, $value in $spacing {
+      --space-#{$space}: #{$value};
     }
   }
 }

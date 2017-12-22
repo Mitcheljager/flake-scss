@@ -5,7 +5,7 @@
   }
 
   .#{$bp}#{map-get($classnames, width)}-#{$division}\/#{$divide} {
-    width: (100% / $divide) * $division;
+    width: (100% / $divide) * $division #{$important};
   }
 
   @if $breakpoint == 0 {
@@ -17,12 +17,22 @@ $grid-size: 12 !default;
 $grid-full: true !default;
 $grid-single: false !default;
 
+@if $css-variables {
+  :root {
+    --grid-size: #{$grid-size};
+  }
+}
+
 @if index($components, grid) {
   // No Breakpoints
   @if $grid-single {
     @for $i from 1 through $grid-size {
       .#{map-get($classnames, width)}-#{$i} {
-        width: (100% / $grid-size) * $i #{$important};
+        @if $css-variables {
+          width: calc((100% / var(--grid-size)) * #{$i}) #{$important};
+        } @else {
+          width: (100% / $grid-size) * $i #{$important};
+        }
       }
 
       $addme: add-to-apply-map("#{map-get($classnames, width)}-#{$i}", "width", "#{(100% / $grid-size) * $i}");

@@ -12,7 +12,7 @@ $border-color-responsive: false !default;
 
       .#{map-get($classnames, border)}-#{"" + $color}
       #{$hover} {
-        border-color: #{$value} #{$important};
+        border-color: #{choose-variable-type($color)} #{$important};
       }
 
       $addme: add-to-apply-map(#{map-get($classnames, border)}-#{"" + $color}, "border-color", "#{$value}");
@@ -47,7 +47,7 @@ $border-color-responsive: false !default;
         @if $theme-colors != () {
           @each $color, $value in $theme-colors {
             .#{$breakpoint}\:#{map-get($classnames, border)}-#{"" + $color} {
-              border-color: #{$value} #{$important};
+              border-color: #{choose-variable-type($color)} #{$important};
             }
           }
         }

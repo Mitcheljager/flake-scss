@@ -11,7 +11,7 @@ $text-colors-hover: true !default;
 
       .#{map-get($classnames, text)}-#{"" + $color}
       #{$hover} {
-        color: #{$value} #{$important};
+        color: #{choose-variable-type($color)} #{$important};
       }
 
       $addme: add-to-apply-map(#{map-get($classnames, text)}-#{"" + $color}, "color", "#{$value}");

@@ -32,3 +32,11 @@
 @function spacing($space) {
   @return map-get($spacing, $space);
 }
+
+@function choose-variable-type($variable, $map: $theme-colors, $addition: "") {
+  @if $css-variables {
+    @return "var(--#{$addition}#{$variable})";
+  } @else {
+    @return map-get($map, $variable);
+  }
+}

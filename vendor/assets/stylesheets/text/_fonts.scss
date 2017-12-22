@@ -58,10 +58,18 @@ $font-families: (
   monospace: $monospace
 );
 
+@if $css-variables {
+  :root {
+    @each $font-family, $value in $font-families {
+      --font-#{$font-family}: #{$value};
+    }
+  }
+}
+
 @if index($components, fonts) {
   @each $font-family, $value in $font-families {
     .#{map-get($classnames, font)}-#{$font-family} {
-      font-family: $value #{$important};
+      font-family: #{choose-variable-type($font-family, $font-families, "font-")} #{$important};
     }
 
     $addme: add-to-apply-map(#{map-get($classnames, font)}-#{$font-family}, "font-family", "#{$value}");
