@@ -29,6 +29,10 @@
   @return map-get(map-get($colors-list, $color), $shade);
 }
 
+@function theme-color($color) {
+  @return map-get($theme-colors, $color);
+}
+
 @function spacing($space) {
   @return map-get($spacing, $space);
 }
