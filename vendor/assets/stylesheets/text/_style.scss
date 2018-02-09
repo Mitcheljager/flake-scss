@@ -7,7 +7,14 @@ $decoration: (
 
 @if index($components, text-decoration) {
   @each $value in $decoration {
-    .#{map-get($classnames, text)}-#{$value} {
+    $hover: "";
+
+    @if $text-colors-hover {
+      $hover: ", .hover\\:#{map-get($classnames, text)}-#{$value}:hover";
+    }
+
+    .#{map-get($classnames, text)}-#{$value}
+    #{$hover} {
       text-decoration: $value #{$important};
     }
 
